@@ -1,33 +1,18 @@
-<!doctype html>
-<html lang="fr">
-<head>
-  <!-- @head -->
-  <title>Mentions légales — Merlin HENRY</title>
-  <meta name="description" content="Mentions légales du portfolio de Merlin HENRY : éditeur, hébergeur, propriété intellectuelle et données personnelles.">
-</head>
-<body data-page="">
-  <!-- @header -->
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import AboutBody from "../components/AboutBody.astro";
+---
+<BaseLayout title="Mentions légales — Merlin HENRY" description="Mentions légales du portfolio de Merlin HENRY : éditeur, hébergeur, propriété intellectuelle et données personnelles.">
+  <main id="contenu" class="container-site py-[clamp(50px,8vw,100px)] pb-[clamp(80px,12vw,120px)]" style="--w:1114px">
+    <AboutBody titre="Mentions légales" paragraphes={[
+      "Ce site est un portfolio personnel destiné à présenter mon parcours ainsi que les travaux réalisés à titre personnel et dans le cadre de mes études.",
+      "Vous y trouverez ma biographie, mes compétences et une sélection de mes projets personnels et scolaires.",
+    ]} />
 
-  <main id="contenu" class="about container">
-    <header>
-      <p class="eyebrow">À propos</p>
-      <h1 class="page-title">Mentions légales</h1>
-    </header>
-    <div class="about__body">
-      <p>Ce site est un portfolio personnel destiné à présenter mon parcours ainsi que les travaux réalisés à titre personnel et dans le cadre de mes études.</p>
-      <p>Vous y trouverez ma biographie, mes compétences et une sélection de mes projets personnels et scolaires.</p>
-      <div class="about__actions">
-        <a class="btn btn--primary" href="./biographie">Ma biographie →</a>
-        <a class="btn btn--contact" href="mailto:henrymerlin.pro@gmail.com">Me contacter</a>
-        <a class="btn" href="./projets">Voir mes projets →</a>
-      </div>
-    </div>
-
-    <div class="legal">
+    <div class="mx-auto mt-[clamp(50px,8vw,80px)] flex max-w-[760px] flex-col gap-9 [&_h2]:text-[clamp(1.4rem,1.1rem+1vw,1.75rem)] [&_p]:pt-2.5 [&_p]:leading-[1.75] [&_p]:opacity-85 [&_a]:text-gold [&_a]:underline [&_a]:underline-offset-[3px]">
       <section>
         <h2>Éditeur du site</h2>
-        <p>Merlin HENRY, particulier — site personnel non commercial.<br>
-        Contact : <a href="mailto:henrymerlin.pro@gmail.com">henrymerlin.pro@gmail.com</a></p>
+        <p>Merlin HENRY, particulier — site personnel non commercial.<br />Contact : <a href="mailto:henrymerlin.pro@gmail.com">henrymerlin.pro@gmail.com</a></p>
         <p>Directeur de la publication : Merlin HENRY.</p>
       </section>
       <section>
@@ -47,7 +32,4 @@
       </section>
     </div>
   </main>
-
-  <!-- @footer -->
-</body>
-</html>
+</BaseLayout>

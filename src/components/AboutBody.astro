@@ -1,0 +1,18 @@
+---
+// Bloc commun aux pages « À propos » et « Mentions légales » (même mise en page dans le Figma)
+interface Props { titre: string; paragraphes: string[] }
+const { titre, paragraphes } = Astro.props;
+const action = "min-h-16 rounded-[12.6px] px-8 text-[clamp(1.05rem,1rem+0.35vw,1.34rem)]";
+---
+<header>
+  <p class="eyebrow">À propos</p>
+  <h1 class="pt-5 text-[clamp(2.6rem,1rem+5.4vw,4.35rem)] leading-[1.1]">{titre}</h1>
+</header>
+<div class="mx-auto mt-10 flex max-w-[627px] flex-col gap-12 pt-[30px]">
+  {paragraphes.map((p) => <p class="text-[clamp(1.15rem,1rem+0.7vw,1.55rem)] leading-[1.55] opacity-82">{p}</p>)}
+  <div class="flex flex-wrap justify-center gap-[15px] pt-4">
+    <a class:list={["btn-primary", action]} href="/biographie/">Ma biographie →</a>
+    <a class:list={["btn font-medium tracking-normal", action]} href="mailto:henrymerlin.pro@gmail.com">Me contacter</a>
+    <a class:list={["btn", action]} href="/projets/">Voir mes projets →</a>
+  </div>
+</div>

@@ -1,0 +1,53 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+import { projets, categories, type Categorie } from "../../data/projets";
+
+// Ordre du Figma : Tous, Programmation, Communication, Création (le compteur se calcule tout seul)
+const ordre: Categorie[] = ["programmation", "communication", "creation"];
+const filtres = [
+  { cle: "tous", label: "Tous", n: projets.length },
+  ...ordre.map((c) => ({ cle: c, label: categories[c], n: projets.filter((p) => p.categorie === c).length })),
+];
+---
+<BaseLayout title="Tous mes projets — Merlin HENRY" description="Programmation, communication, création : l’ensemble des réalisations de Merlin HENRY." page="projets">
+  <main id="contenu" class="container-site pb-[clamp(90px,12vw,160px)]" style="--w:1114px">
+    <header class="pt-[clamp(50px,8vw,100px)]">
+      <p class="eyebrow">Réalisations</p>
+      <h1 class="pt-5 text-[clamp(2.6rem,1rem+5.4vw,4.7rem)] leading-[1.1]">Tous mes projets</h1>
+      <p class="max-w-[640px] pt-5 text-[clamp(1.05rem,1rem+0.3vw,1.2rem)] leading-[1.75] opacity-85">Programmation, communication, création — retrouvez l'ensemble de mes réalisations ici.</p>
+    </header>
+
+    <div id="filtres" role="group" aria-label="Filtrer les projets par catégorie" class="flex flex-wrap gap-2.5 pt-[clamp(40px,6vw,60px)]">
+      {filtres.map((f) => (
+        <button type="button" data-filtre={f.cle} aria-pressed={f.cle === "tous" ? "true" : "false"}
+          class="inline-flex min-h-10 items-center gap-1.5 rounded-full border border-gold/20 px-4 py-1.5 text-[0.85rem] font-medium uppercase tracking-[0.08em] text-slate transition hover:border-gold hover:text-gold aria-pressed:border-gold aria-pressed:bg-gold aria-pressed:font-semibold aria-pressed:text-ink">
+          {f.label} <small class="text-[0.8em] tracking-normal opacity-70">{f.n}</small>
+        </button>
+      ))}
+    </div>
+
+    <ul id="liste-projets" class="grid grid-cols-1 gap-6 pt-6 sm:grid-cols-2 lg:grid-cols-3">
+      {projets.map((p) => <li data-cat={p.categorie}><ProjectCard projet={p} /></li>)}
+    </ul>
+    <p id="aucun" hidden class="pt-10 text-slate">Aucun projet dans cette catégorie pour le moment.</p>
+  </main>
+</BaseLayout>
+
+<script>
+  const boutons = [...document.querySelectorAll<HTMLButtonElement>("#filtres [data-filtre]")];
+  const items = [...document.querySelectorAll<HTMLElement>("#liste-projets li")];
+  const aucun = document.getElementById("aucun")!;
+  for (const b of boutons) {
+    b.addEventListener("click", () => {
+      const f = b.dataset.filtre;
+      boutons.forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+      let n = 0;
+      for (const i of items) {
+        i.hidden = f !== "tous" && i.dataset.cat !== f;
+        if (!i.hidden) n++;
+      }
+      aucun.hidden = n > 0;
+    });
+  }
+</script>

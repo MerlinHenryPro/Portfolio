@@ -3,16 +3,21 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
     "images": "bun scripts/images.ts",
-    "dev": "bun scripts/dev.ts",
-    "pages": "bun scripts/pages.ts",
     "shaders": "bun scripts/shaders.ts",
-    "build": "bun scripts/build.ts",
-    "preview": "bun scripts/preview.ts",
-    "deploy": "bun scripts/deploy.ts"
+    "deploy": "bun scripts/deploy.ts",
+    "astro": "astro"
   },
   "devDependencies": {
     "exiftool-vendored": "^39.4.0",
     "sharp": "^0.35.5"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.3.5",
+    "astro": "^7.4.12",
+    "tailwindcss": "^4.3.5"
   }
 }

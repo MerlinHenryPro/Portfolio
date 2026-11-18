@@ -1,0 +1,59 @@
+---
+import ProjectLayout from "../../layouts/ProjectLayout.astro";
+import Step from "../../components/Step.astro";
+import Figure from "../../components/Figure.astro";
+import Conclusion from "../../components/Conclusion.astro";
+import NodeViewer from "../../components/NodeViewer.astro";
+---
+<ProjectLayout
+  title="Les shaders en 3D :"
+  description="Apprentissage de Blender : création d’un trou noir avec les shader nodes. Arbres de nodes interactifs, étapes et rendu final."
+  rubrique="Apprentissage 3D"
+  tag="Création 3D"
+  lead="Ce projet consistait à apprendre l’utilisation de Blender afin de créer un trou noir avec une grosse utilisation des shader nodes de Blender.">
+
+  <Step num="01. Inspiration & Mise en place" titre="Référence visuelle et setup initial" id="s1">
+    <Figure legende="Référence visuelle principale : le trou noir Gargantua du film Interstellar. Cette image a guidé la direction artistique du projet, notamment pour la distorsion de l’espace et la composition du disque d’accrétion.">
+      <img src="/img/references/gargantua-interstellar.webp" alt="Le trou noir Gargantua du film Interstellar" loading="lazy" class="aspect-video w-full object-cover" />
+    </Figure>
+  </Step>
+
+  <Step num="02. Construction de la scène" titre="Géométrie et volume de départ" id="s2">
+    <Figure src="/img/shaders-3d/construction-scene.webp" alt="Géométrie simple de la scène dans Blender : sphère et disque d’accrétion"
+      legende="Capture de la géométrie simple dans Blender. Cette étape a servi à définir le volume de base, les proportions et la structure de la scène avant l’ajout des effets de matière. Le disque d’accrétion est carré car la forme n’a aucun effet à cette taille sur ses shaders." />
+  </Step>
+
+  <Step num="03. Construction du shader" titre="Réseau de shader nodes" id="s3">
+    <div class="flex flex-col gap-10">
+      <Figure legende="Réseau de shader nodes utilisé pour construire le matériau du trou noir. Cette étape a permis de passer d’un volume simple à une surface réactive et dynamique.">
+        <NodeViewer graph="material-001" />
+      </Figure>
+      <Figure legende="Détail du shader de réfraction et du comportement du matériau à l’horizon du trou noir. Cette configuration permet d’obtenir une transition fluide entre les zones sombres et lumineuses.">
+        <NodeViewer graph="material" />
+      </Figure>
+      <Figure legende="Vue globale de l’arborescence complète du shader du disque d’accrétion. Cette structure complexe gère les couleurs, la température et la luminosité du disque. Le développement de ce shader a pris le plus de temps sur le projet.">
+        <NodeViewer graph="material-003" grand />
+      </Figure>
+    </div>
+  </Step>
+
+  <Step num="04. Test de volume & matière" titre="Premiers essais de shaders" id="s4">
+    <Figure legende="Aperçu de la sphère/volume avec dégradé et anneau. Cette étape a permis de valider la position du trou noir et de la caméra ainsi que les paramètres des shaders">
+      <img src="/img/shaders-3d/test-volume.webp" alt="Aperçu du volume du trou noir avec dégradé et anneau dans la vue Blender" loading="lazy" class="aspect-[908/660] w-full object-cover" />
+    </Figure>
+  </Step>
+
+  <Step num="05. Aperçu de rendu" titre="Echantillonage" id="s5">
+    <Figure src="/img/shaders-3d/apercu-rendu.webp" alt="Rendu noir et blanc non fini du trou noir, avec du grain"
+      legende="Rendu noir et blanc du trou noir dans Blender non fini, mais qui permet de se donner une idée du résultat final, le grain vient du fait que blender calcule petit a petit le résultat des shaders par échantillons." />
+  </Step>
+
+  <Step num="06. Résultat Final" titre="Le rendu final" id="s6">
+    <Figure src="/img/projets/projet-3d.webp" alt="Rendu final du trou noir : le disque d’accrétion courbé autour de l’horizon"
+      legende="Vue finale du projet. Le disque d’accrétion du trou noir courbe bel et bien autour du centre du trou noir, en simulant directement le chemin de la lumière autour du trou noir et du disque d’accrétion." />
+  </Step>
+
+  <Conclusion>
+    <p>Ce projet a été une expérience très intéressante dans l’apprentissage de Blender. Il m’a permis de me familiariser avec les shader nodes et leur complexité.</p>
+  </Conclusion>
+</ProjectLayout>

@@ -1,0 +1,117 @@
+/* ==========================================================================
+   Portfolio Merlin HENRY — Tailwind CSS v4
+   Les couleurs viennent du Figma (« Portfolio/Color/* ») et deviennent des classes :
+   bg-ink, text-gold, border-gold/10, text-cream, bg-navy…
+   ========================================================================== */
+@import "tailwindcss";
+
+@theme {
+  --color-gold: #e8c56d;
+  --color-gold-light: #f1d48a;
+  --color-slate: #6a7fa8;
+  --color-deep: #060a14;
+  --color-cream: #f0e6d3;
+  --color-navy: #111e3a;
+  --color-midnight: #0b1020;
+  --color-terracotta: #d97a4a;
+  --color-sage: #7cb87c;
+  --color-ink: #07090f;
+
+  --font-serif: "Lora", Georgia, serif;
+  --font-sans: "Outfit", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --animate-bob: bob 2s ease-in-out infinite;
+  @keyframes bob { 50% { transform: translateY(5px); } }
+}
+
+@layer base {
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body { @apply bg-ink font-sans text-cream antialiased overflow-x-hidden; }
+  h1, h2, h3 { @apply font-serif font-semibold text-gold; }
+  img { -webkit-user-drag: none; user-select: none; }
+  :focus-visible { @apply outline-2 outline-offset-3 outline-gold rounded; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+}
+
+/* Petits composants réutilisés partout */
+@layer components {
+  .container-site { @apply mx-auto w-[min(100%-2rem,var(--w,1194px))] sm:w-[min(100%-5rem,var(--w,1194px))]; }
+  .eyebrow { @apply text-[0.9375rem] uppercase tracking-[0.16em] text-slate; }
+  .btn { @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-[10px] border border-gold/28 px-6 py-3 text-[1.0625rem] tracking-[0.04em] text-gold transition hover:border-gold hover:bg-gold/10; }
+  .btn-primary { @apply inline-flex min-h-[55px] items-center justify-center rounded-[10px] border border-gold bg-gold px-9 py-3 text-[1.0625rem] font-semibold text-ink transition hover:-translate-y-px hover:bg-gold-light; }
+  .chip { @apply inline-flex min-h-10 items-center rounded-lg border border-gold/20 bg-gold/10 px-5 py-2 text-[0.95rem] font-medium text-gold transition hover:border-gold hover:bg-gold/20; }
+  .tag { @apply inline-block rounded-full border border-current bg-ink/85 px-3 py-0.5 text-[0.77rem] font-semibold uppercase tracking-[0.08em] text-terracotta; }
+  .tag-com { @apply text-sage; }
+}
+
+/* ========================================================================== */
+/* Visualiseur de shader nodes (style Blender) */
+.node-viewer { position: relative; min-height: 340px; height: var(--h, clamp(340px, 55vw, 560px)); border-radius: 12px; background: #1d1d1d; border: 1px solid rgb(232 197 109 / 0.1); overflow: hidden; }
+.node-viewer--tall { --h: clamp(420px, 75vw, 780px); }
+.nv { display: flex; flex-direction: column; }
+.nv-bar { display: flex; align-items: center; gap: 6px; padding: 8px 10px; background: #2b2b2b; border-bottom: 1px solid #111; flex: none; }
+.nv-name { margin-right: auto; font: 500 0.85rem/1 var(--font-sans); color: #ddd; letter-spacing: 0.02em; }
+.nv-name::before { content: "●"; color: #63c763; margin-right: 8px; font-size: 0.7em; vertical-align: 2px; }
+.nv-btn {
+  display: grid; place-items: center; width: 36px; height: 36px; border-radius: 8px;
+  background: #3d3d3d; color: #eee; border: 1px solid #4d4d4d; font: 500 1.1rem/1 var(--font-sans); cursor: pointer;
+}
+.nv-btn:hover { background: #4a4a4a; border-color: rgb(232 197 109 / 0.28); }
+.nv-viewport {
+  position: relative; flex: 1; overflow: hidden; cursor: grab;
+  touch-action: pan-y; /* 1 doigt vertical = scroll de la page ; pincer = zoom dans le graphe */
+  background-color: #1d1d1d;
+  background-image: radial-gradient(#2c2c2c 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+.nv-viewport:active { cursor: grabbing; }
+.nv-viewport:focus-visible { outline: 2px solid #e8c56d; outline-offset: -2px; }
+.nv-world { position: absolute; left: 0; top: 0; transform-origin: 0 0; will-change: transform; }
+.nv-links { position: absolute; left: 0; top: 0; width: 1px; height: 1px; overflow: visible; pointer-events: none; }
+.nv-links path { fill: none; stroke: color-mix(in srgb, var(--c) 55%, #666); stroke-width: 2.4; opacity: 0.9; transition: stroke 0.15s, stroke-width 0.15s; }
+.nv-links path.hl { stroke: var(--c); stroke-width: 4; opacity: 1; }
+.nv-frame { position: absolute; background: rgba(110, 110, 110, 0.14); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 6px; padding: 8px 12px; font: 500 16px/1 var(--font-sans); color: #bbb; }
+.nv-node {
+  position: absolute; border-radius: 8px; background: #303030; color: #e6e6e6;
+  font: 400 12.5px/22px var(--font-sans); box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45); border: 1px solid #1a1a1a;
+  user-select: none;
+}
+.nv-node:hover { border-color: #e8c56d88; }
+.nv-head { height: 26px; padding: 0 10px; border-radius: 7px 7px 0 0; background: var(--hc, #444); font-weight: 500; line-height: 26px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #fff; }
+.nv-input { --hc: #83314a; } .nv-output { --hc: #4d0017; } .nv-shader { --hc: #2b652b; } .nv-texture { --hc: #79461d; }
+.nv-converter { --hc: #246283; } .nv-vector { --hc: #3c3c83; } .nv-group { --hc: #3b5959; }
+.nv-reroute { width: 16px; height: 16px; border-radius: 50%; background: #a1a1a1; border: 0; box-shadow: none; }
+.nv-body { padding: 6px 0; }
+.nv-row { position: relative; height: 22px; padding: 0 12px; white-space: nowrap; overflow: visible; display: flex; align-items: center; gap: 8px; }
+.nv-out { justify-content: flex-end; }
+.nv-row span { overflow: hidden; text-overflow: ellipsis; }
+.nv-field b { margin-left: auto; font-weight: 400; color: #fff; }
+.nv-field { margin: 1px 8px; padding: 0 8px; height: 20px; background: #545454; border-radius: 4px; }
+.nv-in.nv-field { margin-left: 8px; }
+.nv-prop { margin: 1px 8px; padding: 0 8px; height: 20px; background: #282828; border: 1px solid #3d3d3d; border-radius: 4px; }
+.nv-prop::after { content: "⌄"; margin-left: auto; color: #999; }
+.nv-swatch { width: 40px; height: 14px; margin-left: auto; border-radius: 3px; border: 1px solid #222; }
+.nv-sock { position: absolute; top: 50%; width: 11px; height: 11px; margin-top: -5.5px; border-radius: 50%; background: var(--c); border: 1px solid #000; }
+.nv-out .nv-sock { right: -6px; } .nv-in .nv-sock { left: -6px; }
+.nv-field.nv-in .nv-sock { left: -14px; }
+.nv-ramp { height: 56px; padding: 6px 10px; }
+.nv-ramp::before { content: ""; display: block; height: 22px; border-radius: 3px; background: var(--g); border: 1px solid #222; }
+.nv-curve { height: 150px; padding: 6px 10px; }
+.nv-curve svg { width: 100%; height: 100%; background: #282828; border-radius: 4px; }
+.nv-curve .g { stroke: #3d3d3d; stroke-width: 1; fill: none; }
+.nv-curve .c { stroke: #ddd; stroke-width: 2; fill: none; vector-effect: non-scaling-stroke; }
+.nv-hint {
+  position: absolute; left: 50%; bottom: 12px; transform: translateX(-50%); pointer-events: none;
+  padding: 6px 12px; border-radius: 999px; background: rgba(0, 0, 0, 0.6); color: #ddd; font-size: 0.8rem; white-space: nowrap;
+  transition: opacity 0.3s;
+}
+.nv--used .nv-hint { opacity: 0; }
+.nv--nudge .nv-hint { opacity: 1; }
+.nv--nudge .nv-hint::after { content: " (Ctrl + molette)"; }
+.nv--expanded { position: fixed; inset: 0; z-index: 1000; height: auto; border-radius: 0; border: 0; }
+.nv--expanded .nv-viewport { touch-action: none; }
+.nv-lock, .nv-lock body { overflow: hidden; }
+@media (max-width: 640px) { .nv-btn { width: 40px; height: 40px; } .nv-hint { font-size: 0.75rem; } }

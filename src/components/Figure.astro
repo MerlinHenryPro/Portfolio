@@ -1,0 +1,10 @@
+---
+// Image (ou contenu libre via le slot) + légende bleu ardoise
+interface Props { src?: string; alt?: string; legende?: string; maxWidth?: number; class?: string }
+const { src, alt = "", legende, maxWidth, class: classe } = Astro.props;
+---
+<figure class:list={["m-0 flex flex-col gap-5", classe]}>
+  {src && <img src={src} alt={alt} loading="lazy" decoding="async" class="h-auto w-full" style={maxWidth ? `max-width:min(${maxWidth}px,100%)` : undefined} />}
+  <slot />
+  {legende && <figcaption class="text-[clamp(1rem,0.95rem+0.2vw,1.09rem)] leading-[1.57] text-slate" set:html={legende} />}
+</figure>

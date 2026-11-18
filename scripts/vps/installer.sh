@@ -36,6 +36,7 @@ fi
 
 echo "==> 4/6 Construction du site (dist/)"
 cd "$DOSSIER"
+bun install --frozen-lockfile
 bun run build
 
 echo "==> 5/6 Configuration Apache pour $DOMAINE"

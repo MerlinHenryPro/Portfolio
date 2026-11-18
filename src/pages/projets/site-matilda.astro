@@ -1,0 +1,45 @@
+---
+import ProjectLayout from "../../layouts/ProjectLayout.astro";
+import Step from "../../components/Step.astro";
+import Figure from "../../components/Figure.astro";
+import Conclusion from "../../components/Conclusion.astro";
+
+const prototype = "https://www.figma.com/proto/jonmRvO9QSS1jlwLAuOYPN/Maquettes-projet-individuel-%E2%80%94-Merlin-HENRY--Copy-?node-id=3703-122&p=f&t=DkvJImBsVxeCBFKl-1&scaling=scale-down&content-scaling=fixed&page-id=3701%3A115&starting-point-node-id=3703%3A122";
+---
+<ProjectLayout
+  title="Site Matildas"
+  description="Conception sous Figma puis développement d’un site sur les Matildas, les femmes effacées par la science."
+  rubrique="Création de site"
+  tag="Création"
+  lead="Ce projet consistait à apprendre l’utilisation de Figma afin de créer un site sur les Matildas, les femmes effacées par la science. Ensuite, nos avons du programmer le site">
+
+  <Step num="1. Les premières étapes" titre="Le moodboard" id="s1">
+    <Figure src="/img/matilda/moodboard.webp" alt="Moodboard du site Matildas sur le thème des étoiles et de l’espace"
+      legende="Le moodboard se base sur les étoiles et l’espace, c’est un esthétique que j’apprécie beaucoup personnellement." />
+  </Step>
+
+  <Step num="2. Le Guide de style" titre="Le style de l’interface" id="s2">
+    <Figure legende="Le guide de style permet de définir le style de l’interface, les différents éléments du site et surtout les couleurs qu’on va utiliser partout.">
+      <div class="flex flex-col gap-5">
+        <img src="/img/matilda/guide-style-1.webp" alt="Guide de style du site Matildas : couleurs et typographies" loading="lazy" class="w-full" />
+        <img src="/img/matilda/guide-style-2.webp" alt="Guide de style du site Matildas : composants d’interface" loading="lazy" class="w-full" />
+        <img src="/img/matilda/guide-style-3.webp" alt="Guide de style du site Matildas : éléments du site" loading="lazy" class="w-full" />
+      </div>
+    </Figure>
+  </Step>
+
+  <Step num="Le site web" titre="La page d’acceuil" id="s3">
+    <Figure legende="La page d’acceuil est sobre, elle réutilise les éléments du guide de style et permet d’accéder aux différents menus.">
+      <img src="/img/matilda/page-accueil.webp" alt="Maquette complète de la page d’accueil du site Matildas" loading="lazy" class="mx-auto max-h-[min(1152px,140vw)] w-auto max-w-full" />
+    </Figure>
+  </Step>
+
+  <Conclusion titre="Lien de prévisualisation du site :">
+    <a href={prototype} target="_blank" rel="noopener">Ouvrir le prototype Figma du site ↗</a>
+    <p class="pt-4 text-[1.09rem] text-slate">La prévisualisation n’est actuellement que disponible sous le prototype Figma car le serveur portant le site a subi une réinitialisation</p>
+  </Conclusion>
+
+  <Conclusion>
+    <p>Ce projet a été une expérience très intéressante dans l’apprentissage de l’utilisation de Figma, il a permis de développer mes compétences avec Figma grandement.</p>
+  </Conclusion>
+</ProjectLayout>

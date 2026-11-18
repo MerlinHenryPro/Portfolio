@@ -1,7 +1,7 @@
 # Portfolio — Merlin HENRY
 
-Site portfolio statique (HTML / CSS / TypeScript) construit avec **Bun**, adapté du Figma « Portfolio perso ».
-Responsive (mobile → grand écran), sans framework, publié sur un **VPS Apache** (https://portfolio.merlinhenry.fr).
+Site portfolio construit avec **Astro + Tailwind CSS** et **Bun**, adapté du Figma « Portfolio perso ».
+Site statique responsive (mobile → grand écran), publié sur un **VPS Apache** (https://portfolio.merlinhenry.fr).
 
 ---
 
@@ -31,48 +31,57 @@ bun install
 bun run dev
 ```
 
-Ouvre l'adresse affichée (ex. `http://localhost:3000`). La page se recharge toute seule à chaque modification.
+Ouvre l'adresse affichée (`http://localhost:4321`). La page se recharge toute seule à chaque modification.
 
 ### 4. Où se trouve quoi
 
 ```
-assets-src/          ← tes ORIGINAUX (jamais publiés tels quels)
-  projets/  shaders-3d/  references/  logos/  hero-trou-noir.png
-  shaders/           ← exports JSON des shader nodes (addon Blender) + meta.json
+assets-src/              ← tes ORIGINAUX (ne sont pas utilisés directement par le site)
+  projets/ affiche/ olyvia/ matilda/ montres/ shaders-3d/ biographie/ references/ logos/
+  shaders/               ← exports JSON des shader nodes (addon Blender) + meta.json
+public/
+  img/                   ← images optimisées ET protégées (générées par « bun run images »)
+  robots.txt, ai.txt…    ← copiés tels quels en ligne
 src/
-  pages/             ← les pages à modifier (index, projet-shaders-3d, 404…)
-  partials/          ← head, header et footer communs à toutes les pages
-  styles/main.css    ← tout le style (couleurs du Figma en haut du fichier)
-  scripts/           ← menu mobile, visualiseur de nodes
-  img/               ← images optimisées ET protégées (générées par « bun run images »)
-  data/shaders/      ← graphes de nodes pour le site (générés par « bun run shaders »)
-public/              ← robots.txt, ai.txt… copiés tels quels en ligne
-protection/          ← registre des identifiants uniques de tes images
-scripts/             ← outils (images, nodes, build, aperçu) + scripts/blender/
+  pages/                 ← une page = un fichier .astro (l'adresse suit le chemin du fichier)
+  layouts/               ← BaseLayout (head, header, footer) et ProjectLayout (pages projet)
+  components/            ← Header, Footer, ProjectCard, Step, Figure, Conclusion, NodeViewer…
+  data/projets.ts        ← la liste des projets (cartes de l'accueil et de la page Projets)
+  data/shaders/          ← graphes de nodes pour le site (générés par « bun run shaders »)
+  scripts/node-viewer.ts ← visualiseur interactif des nodes
+  styles/global.css      ← Tailwind + couleurs et polices du Figma (@theme)
+protection/              ← registre des identifiants uniques de tes images
+scripts/                 ← outils (images, nodes, déploiement) + scripts/blender/ + scripts/vps/
 ```
 
-> Ne modifie pas `src/*.html` : ces fichiers sont **générés** depuis `src/pages/`.
-> Le header et le footer se changent une seule fois dans `src/partials/`.
+**Le style** : tout se fait avec les classes Tailwind directement dans les fichiers `.astro`.
+Les couleurs du Figma sont disponibles comme classes : `text-gold`, `bg-navy`, `bg-ink`, `text-cream`,
+`text-slate`, `border-gold/10`, `text-terracotta`, `text-sage`… (définies dans `src/styles/global.css`).
+Quelques classes maison réutilisables y sont aussi : `btn`, `btn-primary`, `chip`, `tag`, `eyebrow`, `container-site`.
 
-**Les pages** (adresse en ligne = nom du fichier sans `.html`) :
+> ⚠️ Les images sont dans `public/img` et appelées par leur chemin (`/img/…`), **pas** via le composant
+> `<Image>` d'Astro : il ré-encode les images et effacerait les métadonnées de protection.
 
-| Fichier `src/pages/` | Page |
-|---|---|
-| `index.html` | Accueil (hero, outils, projets) |
-| `projets.html` | Tous les projets + filtres par catégorie |
-| `biographie.html` | Parcours, chronologie, compétences |
-| `a-propos.html` | Quel est ce site ? |
-| `mentions-legales.html` | Mentions légales (éditeur, hébergeur, droits, IA) |
-| `projet-site-matilda.html` | Site Matildas |
-| `projet-olyvia.html` | Olyvia! |
-| `projet-affiche.html` | Affiche évènementielle de Jazz |
-| `projet-shaders-3d.html` | Les shaders en 3D (arbres de nodes interactifs) |
-| `projet-montres.html` | TikTak, site de montres |
-| `404.html` | Page introuvable |
+**Les pages :**
 
-**Ajouter un projet :** copie une page `projet-….html`, change les textes et images, puis ajoute sa carte
-dans `index.html` et `projets.html` (attribut `data-cat="creation"`, `"communication"` ou `"programmation"` :
-le compteur du filtre se met à jour tout seul).
+| Fichier `src/pages/` | Adresse | Page |
+|---|---|---|
+| `index.astro` | `/` | Accueil (hero, outils, projets) |
+| `projets/index.astro` | `/projets/` | Tous les projets + filtres par catégorie |
+| `biographie.astro` | `/biographie/` | Parcours, chronologie, compétences |
+| `a-propos.astro` | `/a-propos/` | Quel est ce site ? |
+| `mentions-legales.astro` | `/mentions-legales/` | Mentions légales |
+| `projets/site-matilda.astro` | `/projets/site-matilda/` | Site Matildas |
+| `projets/olyvia.astro` | `/projets/olyvia/` | Olyvia! |
+| `projets/affiche.astro` | `/projets/affiche/` | Affiche évènementielle de Jazz |
+| `projets/shaders-3d.astro` | `/projets/shaders-3d/` | Les shaders en 3D (arbres de nodes interactifs) |
+| `projets/montres.astro` | `/projets/montres/` | TikTak, site de montres |
+| `404.astro` | — | Page introuvable |
+
+**Ajouter un projet :**
+1. Ajoute une entrée dans `src/data/projets.ts` (titre, date, texte, image, catégorie). La carte apparaît
+   sur l'accueil et dans « Tous mes projets », et le compteur du filtre se met à jour tout seul.
+2. Copie une page de `src/pages/projets/` en lui donnant le même nom que le `slug`, puis change textes et images.
 
 ### 5. Ajouter ou changer une image (avec protection)
 
@@ -82,7 +91,7 @@ le compteur du filtre se met à jour tout seul).
    ```bash
    bun run images
    ```
-4. Utilise-la dans une page : `<img src="./img/projets/mon-projet.webp" alt="Description" loading="lazy">`
+4. Utilise-la dans une page : `<img src="/img/projets/mon-projet.webp" alt="Description" loading="lazy" />`
    (le suffixe `glazed` est retiré automatiquement du nom).
 
 **Ce que fait `bun run images` sur chaque création :**
@@ -118,8 +127,8 @@ flèches / + / − / 0 au clavier. Survoler un node met ses câbles en évidence
    bun run shaders
    ```
 4. Déclare-le en haut de `src/scripts/node-viewer.ts` (une ligne `import` + une ligne dans `GRAPHS`),
-   puis place-le dans une page : `<div class="node-viewer" data-graph="mon-materiau"></div>`
-   (ajoute la classe `node-viewer--tall` pour un grand arbre).
+   puis place-le dans une page : `<NodeViewer graph="mon-materiau" />`
+   (ajoute `grand` pour un grand arbre).
 
 ### 7. Vérifier la version finale
 
@@ -128,7 +137,7 @@ bun run build
 bun run preview
 ```
 
-Ouvre `http://localhost:4173` : c'est exactement ce qui sera en ligne.
+Ouvre `http://localhost:4321` : c'est exactement ce qui sera en ligne (dossier `dist/`).
 
 ### 8. Mettre en ligne (VPS Apache)
 

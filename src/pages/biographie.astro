@@ -1,0 +1,69 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const reseaux = [
+  { href: "https://github.com/MerlinHenryPro", label: "GitHub ↗" },
+  { href: "https://www.linkedin.com/in/merlin-henry-16a010396", label: "LinkedIn ↗" },
+  { href: "https://www.behance.net/Merlin_HENRY", label: "Behance ↗" },
+];
+const parcours = [
+  { annee: "2026", titre: "Etudes en MMI - IUT NFC", texte: "Des études en communication, création et programmation à l’IUT de Montbéliard." },
+  { annee: "2025", titre: "Réussite du BAC", texte: "Réussite du Baccalauréat et fin du lycée." },
+  { annee: "2023", titre: "Réussite du test Cambridge avec mention C1", texte: "Passage du test Cambrdge avec mention C1 et décernement du diplôme." },
+];
+const competences = [
+  { titre: "Programmation", items: ["Javascript / Pocketbase", "CSS/HTML", "SQLite", "Github"] },
+  { titre: "Communication", items: ["Etude de communication", "Réseaux sociaux", "Niveau C1 d’Anglais"] },
+  { titre: "Création", items: ["Direction artistique", "Illustrator / Photoshop", "Print & Web"] },
+];
+const h2 = "pt-[clamp(50px,8vw,80px)] text-[clamp(1.6rem,1.2rem+1.2vw,1.87rem)] leading-[1.5]";
+---
+<BaseLayout title="Biographie — Merlin HENRY" description="Parcours, formation et compétences de Merlin HENRY, étudiant en MMI à Montbéliard." page="biographie">
+  <main id="contenu" class="container-site pb-[clamp(70px,10vw,100px)]" style="--w:915px">
+    <header class="pt-[clamp(50px,8vw,100px)]">
+      <p class="eyebrow">Biographie</p>
+      <h1 class="pt-5 text-[clamp(2.6rem,1rem+5.4vw,4.7rem)] leading-[1.1]">Mon parcours</h1>
+    </header>
+
+    <div class="grid items-start gap-8 pt-10 md:grid-cols-[290px_1fr] md:gap-[60px]">
+      <img src="/img/biographie/portrait.webp" alt="Portrait de Merlin HENRY" width="534" height="701" class="aspect-[290/380] w-full max-w-[290px] object-cover" />
+      <div class="flex flex-col gap-[25px] text-[clamp(1.05rem,1rem+0.35vw,1.25rem)] leading-[1.85] [&>p]:opacity-85">
+        <p>Je suis Merlin HENRY, un étudiant en MMI à Montbéliard.</p>
+        <p>J’étudie la communication, la programmation de sites web et la création d’affiches, de visuels et l’UX/UI afin de mettre à profit ces compétences et les harmoniser pour créer des visuels, des sites et une communication efficace et mémorable.</p>
+        <p>Grand passionné de jeux vidéos et de cuisine, je m’intéresse aux mécanismes derrière mes intérets. J’ai donc décidé de me concentrer sur la création de visuels et la 3D.</p>
+        <div class="flex flex-wrap gap-[15px] pt-2.5">
+          {reseaux.map((r) => <a class="chip" href={r.href} target="_blank" rel="noopener">{r.label}</a>)}
+        </div>
+      </div>
+    </div>
+
+    <h2 class={h2}>Parcours chronologique</h2>
+    <ol class="relative mt-10 flex flex-col gap-[50px] pl-10 before:absolute before:inset-y-2.5 before:left-0 before:w-px before:bg-gold/20 before:content-['']">
+      {parcours.map((e) => (
+        <li class="relative before:absolute before:-left-[47px] before:top-1 before:h-[11px] before:w-[14px] before:rounded-md before:border-2 before:border-ink before:bg-gold before:shadow-[0_0_0_2.5px_rgb(232_197_109/0.35)] before:content-['']">
+          <time datetime={e.annee} class="text-[0.9rem] tracking-[0.1em] text-slate">{e.annee}</time>
+          <h3 class="pt-1.5 text-[1.3rem] leading-[1.5]">{e.titre}</h3>
+          <p class="pt-2 text-[1.14rem] leading-[1.75] opacity-78">{e.texte}</p>
+        </li>
+      ))}
+    </ol>
+
+    <h2 class={h2}>Compétences</h2>
+    <ul class="grid gap-5 pt-[35px] sm:grid-cols-2 lg:grid-cols-3">
+      {competences.map((c) => (
+        <li class="rounded-[17px] border border-gold/10 bg-navy p-[30px]">
+          <h3 class="font-sans text-[0.9rem] font-semibold uppercase leading-normal tracking-[0.1em]">{c.titre}</h3>
+          <ul class="flex flex-col gap-2.5 pt-5">
+            {c.items.map((i) => <li class="flex items-center gap-2.5 text-[1.09rem] opacity-82 before:text-[9px] before:text-gold before:content-['◆']">{i}</li>)}
+          </ul>
+        </li>
+      ))}
+    </ul>
+
+    <section class="mt-[clamp(60px,10vw,100px)] rounded-[20px] border border-gold/15 bg-navy p-[clamp(32px,5vw,50px)] text-center">
+      <h2 class="text-[clamp(1.4rem,1.1rem+1vw,1.62rem)] leading-[1.5]">Curieux de voir ce que je fais ?</h2>
+      <p class="pb-[30px] pt-[15px] text-[1.14rem] opacity-78">Retrouvez mes projets de code, de communication et de création.</p>
+      <a class="btn-primary" href="/projets/">Voir mes projets →</a>
+    </section>
+  </main>
+</BaseLayout>

@@ -1,0 +1,51 @@
+---
+interface Props { page?: string }
+const { page } = Astro.props;
+const liens = [
+  { href: "/", cle: "accueil", label: "Accueil" },
+  { href: "/projets/", cle: "projets", label: "Projets" },
+  { href: "/biographie/", cle: "biographie", label: "Biographie" },
+  { href: "/a-propos/", cle: "a-propos", label: "À propos" },
+];
+---
+<a href="#contenu" class="fixed -top-16 left-2 z-[100] rounded-lg bg-gold px-4 py-2 font-semibold text-ink focus:top-2">Aller au contenu</a>
+<header class="sticky top-0 z-50 border-b border-gold/10 bg-deep/90 backdrop-blur-md">
+  <div class="mx-auto flex h-16 w-full max-w-[1432px] items-center justify-between px-4 md:h-20 md:px-[30px]">
+    <a href="/" class="font-serif text-xl font-semibold tracking-[-0.01em] text-gold md:text-2xl">Merlin HENRY</a>
+
+    <button id="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Ouvrir le menu"
+      class="group -mr-2 grid size-12 place-items-center text-gold md:hidden">
+      <span class="relative block h-0.5 w-6 rounded bg-current transition group-aria-expanded:bg-transparent
+        before:absolute before:-top-[7px] before:left-0 before:h-0.5 before:w-6 before:rounded before:bg-current before:transition before:content-['']
+        after:absolute after:top-[7px] after:left-0 after:h-0.5 after:w-6 after:rounded after:bg-current after:transition after:content-['']
+        group-aria-expanded:before:translate-y-[7px] group-aria-expanded:before:rotate-45
+        group-aria-expanded:after:-translate-y-[7px] group-aria-expanded:after:-rotate-45"></span>
+    </button>
+
+    <nav id="menu" aria-label="Navigation principale"
+      class="invisible fixed inset-x-0 top-16 -translate-y-2 flex-col border-b border-gold/10 bg-deep px-4 pb-6 pt-2 opacity-0 transition
+             data-[open]:visible data-[open]:translate-y-0 data-[open]:opacity-100
+             md:visible md:static md:flex md:translate-y-0 md:flex-row md:gap-10 md:border-0 md:bg-transparent md:p-0 md:opacity-100 flex">
+      {liens.map((l) => (
+        <a href={l.href} aria-current={page === l.cle ? "page" : undefined}
+          class="border-b border-gold/10 py-3.5 text-lg font-medium uppercase tracking-[0.05em] text-slate transition hover:text-gold aria-[current=page]:text-gold md:border-0 md:py-0 md:text-[1.0625rem]">
+          {l.label}
+        </a>
+      ))}
+    </nav>
+  </div>
+</header>
+
+<script>
+  const burger = document.getElementById("burger")!;
+  const menu = document.getElementById("menu")!;
+  const setMenu = (open: boolean) => {
+    menu.toggleAttribute("data-open", open);
+    burger.setAttribute("aria-expanded", String(open));
+    burger.setAttribute("aria-label", open ? "Fermer le menu" : "Ouvrir le menu");
+  };
+  burger.addEventListener("click", () => setMenu(!menu.hasAttribute("data-open")));
+  menu.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => setMenu(false)));
+  addEventListener("keydown", (e) => { if (e.key === "Escape") setMenu(false); });
+  matchMedia("(min-width: 768px)").addEventListener("change", () => setMenu(false));
+</script>

@@ -1,0 +1,47 @@
+---
+import ProjectLayout from "../../layouts/ProjectLayout.astro";
+import Step from "../../components/Step.astro";
+import Figure from "../../components/Figure.astro";
+import Conclusion from "../../components/Conclusion.astro";
+
+const sousTitre = "text-[clamp(1.75rem,1rem+2.6vw,2.5rem)] leading-[1.25]";
+---
+<ProjectLayout
+  title="Affiche évènementielle de Jazz"
+  description="Création d’une affiche et de visuels pour les réseaux pour un évènement de Jazz de la Fanfa’Comtoise."
+  rubrique="Communication"
+  tag="Communication"
+  tagCom
+  lead="Ce projet consistait à créer une affiche pour un évènement de Jazz et créer des visuels pour les réseaux">
+
+  <Step num="1. Les premières étapes" titre="Le moodboard" id="s1">
+    <Figure src="/img/affiche/moodboard.webp" alt="Moodboard de l’affiche Jazz : ambiance cozy et chaleureuse"
+      legende="Ce moodboard est extrêment sophistiqué car il capture l’ambiance du Jazz a la perfection tout en se focalisant sur une ésthérique “cozy”" />
+  </Step>
+
+  <Step num="2. Le design des affiches et posts" titre="Le logo et les couleurs" id="s2">
+    <Figure legende="Les couleurs sont directement tirées du moodboard, elles sont également déclinées en différentes variantes.<br>Le logo mélange le nom de l’association “Fanfa’Comtoise avec le saxophone pour le “F” de “Fanfa”.">
+      <div class="flex flex-col gap-5">
+        <img src="/img/affiche/couleurs.webp" alt="Palette de couleurs et ses variantes" loading="lazy" class="w-full" />
+        <img src="/img/affiche/logo.webp" alt="Logo de la Fanfa’Comtoise : le F formé par un saxophone" loading="lazy" class="w-full" />
+      </div>
+    </Figure>
+  </Step>
+
+  <Step num="Les Affiches" titre="L’affiche en A2 :" id="s3">
+    <Figure src="/img/affiche/affiche-a2.webp" alt="Affiche A2 de l’évènement Jazz, 27, 28 et 29 juin 2026"
+      legende="Cette affiche reprend les couleurs déterminées par le moodboard et le saxophone du logo afin de donner une apparence festive tout en communiquant toutes les informations." />
+    <h2 class={sousTitre}>L’affiche en A5 recto-verso :</h2>
+    <img src="/img/affiche/affiche-a5.webp" alt="Affiche A5 recto-verso de l’évènement Jazz" loading="lazy" class="w-full" />
+  </Step>
+
+  <Step num="Les posts" titre="La bannière facebook :" id="s4">
+    <img src="/img/affiche/banniere-facebook.webp" alt="Bannière Facebook de l’évènement" loading="lazy" class="w-full max-w-[820px]" />
+    <h2 class={sousTitre}>Le post et la story Instagram :</h2>
+    <img src="/img/affiche/post-story-instagram.webp" alt="Post et story Instagram de l’évènement" loading="lazy" class="w-full" />
+  </Step>
+
+  <Conclusion>
+    <p>Ce projet a été une expérience très intéressante dans l’apprentissage de l’utilisation de Figma et de création d’affiches pour l’évenementiel.</p>
+  </Conclusion>
+</ProjectLayout>

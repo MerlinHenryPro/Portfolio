@@ -1,0 +1,10 @@
+---
+// Arbre de shader nodes Blender interactif (voir src/scripts/node-viewer.ts)
+interface Props { graph: "material-001" | "material" | "material-003"; grand?: boolean }
+const { graph, grand } = Astro.props;
+---
+<div class:list={["node-viewer", grand && "node-viewer--tall"]} data-graph={graph}></div>
+
+<script>
+  import "../scripts/node-viewer.ts";
+</script>

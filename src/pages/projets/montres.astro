@@ -1,0 +1,44 @@
+---
+import ProjectLayout from "../../layouts/ProjectLayout.astro";
+import Step from "../../components/Step.astro";
+import Figure from "../../components/Figure.astro";
+import Conclusion from "../../components/Conclusion.astro";
+
+const fonctionnalites = [
+  { src: "/img/montres/previsualisation.webp", max: 675, alt: "Interface de prévisualisation de la montre", texte: "L’interface de prévisualisation de la montre, c’est ici qu’on peut voir en direct les changements de la sélection." },
+  { src: "/img/montres/selecteur.webp", max: 599, alt: "Sélecteur de couleurs, formes et matériaux", texte: "Le sélecteur, il permet directement de sélectionner les couleurs, formes et matériaux de la montre." },
+  { src: "/img/montres/assistant-ia.webp", max: 709, alt: "Assistant IA qui choisit les couleurs selon un style", texte: "L’assistant IA, on lui donne un style et il sélectionne automatiquement les bonnes couleurs" },
+  { src: "/img/montres/connexion-google.webp", alt: "Connexion avec un compte Google", texte: "Un système de connexion via Google permettant d’enregistrer ses montres pour plus tard, il a fallu utiliser l’API de google, ce qui m’a appris une nouvelle compétence." },
+  { src: "/img/montres/montres-enregistrees.webp", alt: "Liste des montres enregistrées", texte: "La liste des montres enregistrées, elles peuvent ensuite être modifiées et achetées plus tard." },
+  { src: "/img/montres/commandes.webp", alt: "Gestion des commandes", texte: "On peut également gérer ses commandes lorsqu’on est connecté." },
+];
+---
+<ProjectLayout
+  title="TikTak, site de montres customisables"
+  description="TikTak : un site de montres personnalisables avec configurateur, assistant IA et connexion Google."
+  rubrique="Création de site"
+  tag="Création"
+  lead="Ce projet consistait à créer un site de montres customisables avec des fonctions IA">
+
+  <Step num="1. Les premières étapes" titre="Les instructions" id="s1">
+    <p class="text-[clamp(1rem,0.95rem+0.2vw,1.09rem)] leading-[1.57] text-slate">Le sujet nous indiquait déjà un style à suivre, une cible, et nos objectifs, ainsi que toutes les fonctionnalités attendues tout comme le nom du site.</p>
+    <img src="/img/montres/instructions.webp" alt="Extrait du sujet du projet TikTak" loading="lazy" class="w-full max-w-[738px]" />
+  </Step>
+
+  <Step num="2. Les fonctionnalités" titre="Le configurateur" id="s2">
+    <div class="flex flex-col gap-10">
+      {fonctionnalites.map((f) => <Figure src={f.src} alt={f.alt} maxWidth={f.max} legende={f.texte} />)}
+    </div>
+  </Step>
+
+  <Conclusion titre="Les liens">
+    <div class="flex flex-col gap-3">
+      <p>Projet Github : <a href="https://github.com/MerlinHenryPro/SAE-301-TikTak" target="_blank" rel="noopener">github.com/MerlinHenryPro/SAE-301-TikTak</a></p>
+      <p>Le site web : <a href="https://tiktak.merlinhenry.fr/" target="_blank" rel="noopener">tiktak.merlinhenry.fr</a></p>
+    </div>
+  </Conclusion>
+
+  <Conclusion>
+    <p>Ce projet a été une expérience très intéressante dans l’apprentissage de l’utilisation de Figma et de création d’affiches pour l’évenementiel.</p>
+  </Conclusion>
+</ProjectLayout>

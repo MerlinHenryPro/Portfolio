@@ -1,0 +1,10 @@
+---
+interface Props { titre?: string }
+const { titre = "Conclusion" } = Astro.props;
+---
+<section class="flex flex-col gap-[30px] border-t border-gold/10 pt-10">
+  <h2 class="text-[clamp(1.75rem,1rem+2.6vw,2.5rem)]">{titre}</h2>
+  <div class="text-[clamp(1.1rem,1rem+0.5vw,1.4rem)] leading-[1.67] [&_a]:text-cream [&_a]:underline [&_a]:underline-offset-4 [&_a]:break-words [&_a:hover]:text-gold">
+    <slot />
+  </div>
+</section>

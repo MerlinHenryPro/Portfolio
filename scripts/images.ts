@@ -20,7 +20,7 @@ import { dirname, join, parse, relative } from "node:path";
 const AUTEUR = "Merlin HENRY";
 const SITE = "https://github.com/MerlinHenryPro/Portfolio";
 const SRC = "assets-src";
-const OUT = "src/img";
+const OUT = "public/img";
 const REGISTRE = "protection/registre-images.json";
 
 // Largeur max par dossier (les logos restent petits, les créations sont protégées)

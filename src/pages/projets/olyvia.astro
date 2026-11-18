@@ -1,0 +1,62 @@
+---
+import ProjectLayout from "../../layouts/ProjectLayout.astro";
+import Step from "../../components/Step.astro";
+import Figure from "../../components/Figure.astro";
+import Conclusion from "../../components/Conclusion.astro";
+---
+<ProjectLayout
+  title="Olyvia!"
+  description="Olyvia! : un site pour aider les seniors et les étudiants, de l’idée au site web en passant par le logo et les posts réseaux."
+  rubrique="Création de site"
+  tag="Création"
+  lead="Ce projet consistait à créer un site qui réglerait un problème, faire un produit unique en son genre. Il nos a donc fait beaucoup réfléchir à l’idée, et ensuite il a fallu créer des posts pour les réseaux afin de promouvoir le projet.">
+
+  <Step num="1. Les premières étapes" titre="Le moodboard" id="s1">
+    <Figure legende="Ce moodboard nous a permis de choisir les couleurs, nous avions cependant déjà quelques idées, comme des couleurs pastel et terreuses, proches de la nature">
+      <div class="grid items-start gap-4 sm:grid-cols-[1fr_4fr]">
+        <img src="/img/olyvia/moodboard-04.webp" alt="Moodboard Olyvia! : planche verticale" loading="lazy" class="w-full max-w-[212px] justify-self-center rounded-md sm:justify-self-end" />
+        <img src="/img/olyvia/moodboard-05.webp" alt="Moodboard Olyvia! : couleurs pastel et terreuses" loading="lazy" class="w-full rounded-md" />
+        <img src="/img/olyvia/moodboard-03.webp" alt="Moodboard Olyvia! : planche verticale" loading="lazy" class="w-full max-w-[210px] justify-self-center rounded-md sm:justify-self-end" />
+        <img src="/img/olyvia/moodboard-02.webp" alt="Moodboard Olyvia! : ambiance nature" loading="lazy" class="w-full rounded-md" />
+      </div>
+    </Figure>
+  </Step>
+
+  <Step num="2. Le Guide de style" titre="Le style de l’interface et le logo" id="s2">
+    <Figure legende="Le guide de style permet de définir le style de l’interface, les différents éléments du site et surtout les couleurs qu’on va utiliser partout.<br>on a également du produire un logo pour l’occasion.">
+      <div class="flex flex-col gap-5">
+        <img src="/img/olyvia/guide-06.webp" alt="Guide de style Olyvia! : couleurs et typographies" loading="lazy" class="w-full" />
+        <img src="/img/olyvia/guide-11.webp" alt="Guide de style Olyvia! : composants" loading="lazy" class="w-full" />
+        <img src="/img/olyvia/guide-10.webp" alt="Logo Olyvia!" loading="lazy" class="w-full" />
+      </div>
+    </Figure>
+  </Step>
+
+  <Step num="Les posts" titre="Les mockups" id="s3">
+    <Figure legende="Afin de créer des posts pour les réseaux, il a fallu créer des mockups">
+      <div class="grid gap-4 sm:grid-cols-2">
+        <img src="/img/olyvia/mockup-08.webp" alt="Mockup d’un post réseaux sociaux Olyvia!" loading="lazy" class="w-full rounded-md" />
+        <img src="/img/olyvia/mockup-07.webp" alt="Mockup d’un post réseaux sociaux Olyvia!" loading="lazy" class="w-full rounded-md" />
+      </div>
+    </Figure>
+  </Step>
+
+  <Step titre="Le site web :" id="s4">
+    <div class="flex flex-col gap-5">
+      <img src="/img/olyvia/site-1.webp" alt="Page d’accueil du site Olyvia!" loading="lazy" class="w-full" />
+      <img src="/img/olyvia/site-2.webp" alt="Page du site Olyvia!" loading="lazy" class="w-full max-w-[586px]" />
+    </div>
+  </Step>
+
+  <Conclusion titre="Liens :">
+    <div class="flex flex-col gap-3">
+      <p>Accès au site : <a href="https://olyvia.badarous.fr/" target="_blank" rel="noopener">olyvia.badarous.fr</a></p>
+      <p>Accès au Behance : <a href="https://www.behance.net/gallery/250392569/Projet-Olyvia-dapprentissage-et-dtudes" target="_blank" rel="noopener">Projet Olyvia! d’apprentissage et d’études</a></p>
+      <p>Accès au post Linkedin : <a href="https://www.linkedin.com/feed/update/urn:li:ugcPost:7467459744883011585" target="_blank" rel="noopener">voir le post ↗</a></p>
+    </div>
+  </Conclusion>
+
+  <Conclusion>
+    <p>Ce projet a été une expérience très intéressante dans l’apprentissage de l’utilisation de Figma, il a permis de développer mes compétences avec Figma grandement.</p>
+  </Conclusion>
+</ProjectLayout>

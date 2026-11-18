@@ -1,0 +1,77 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import { projets } from "../data/projets";
+
+const outils = [
+  { nom: "JavaScript", logo: "/img/logos/logo-js.svg", w: 50, h: 50 },
+  { nom: "HTML", logo: "/img/logos/logo-html.webp", w: 50, h: 50 },
+  { nom: "CSS", logo: "/img/logos/logo-css.webp", w: 38, h: 54 },
+  { nom: "Figma", logo: "/img/logos/logo-figma.svg", w: 37, h: 55 },
+  { nom: "VS Code", logo: "/img/logos/logo-vscode.webp", w: 52, h: 52, retourne: true },
+  { nom: "Blender", logo: "/img/logos/logo-blender.webp", w: 66, h: 54 },
+  { nom: "Illustrator", logo: "/img/logos/logo-illustrator.webp", w: 52, h: 52 },
+  { nom: "Photoshop", logo: "/img/logos/logo-photoshop.webp", w: 52, h: 52 },
+  { nom: "InDesign", logo: "/img/logos/logo-indesign.webp", w: 55, h: 53 },
+];
+---
+<BaseLayout title="Merlin HENRY — Portfolio création" description="Portfolio de Merlin HENRY : création de sites web, communication et 3D. Biographie, compétences, projets et créations." page="accueil">
+  <main>
+    <!-- Hero : rendu Blender du trou noir (plus tard : séquence animée au scroll) -->
+    <section class="relative grid min-h-[min(975px,calc(100svh-4rem))] place-items-center overflow-clip px-4 py-[60px] md:min-h-[min(975px,calc(100svh-5rem))]" aria-labelledby="hero-titre">
+      <div class="absolute inset-0" aria-hidden="true">
+        <img src="/img/hero-trou-noir.webp" alt="" width="1920" height="1080" fetchpriority="high" class="size-full object-cover opacity-40" />
+        <div class="absolute inset-x-0 bottom-0 top-[40%] bg-linear-to-b from-ink/0 to-ink"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_72%_72%_at_50%_50%,rgb(7_9_15/0)_40%,var(--color-ink)_100%)]"></div>
+      </div>
+      <div class="relative z-10 max-w-[920px] text-center">
+        <h1 id="hero-titre" class="text-[clamp(3.25rem,1rem+8.5vw,7.46rem)] leading-[1.05]">Merlin Henry</h1>
+        <p class="pb-12 pt-7 font-serif text-[clamp(1.25rem,1rem+0.9vw,1.55rem)] italic leading-[1.7] opacity-85">Création</p>
+        <a href="/biographie/" class="btn-primary">En savoir plus sur moi →</a>
+        <div>
+          <a href="#contenu" class="mt-[clamp(40px,8vh,80px)] inline-flex flex-col items-center gap-2 text-[0.8rem] uppercase tracking-[0.12em] text-gold opacity-35 transition hover:opacity-80">
+            <span>Défiler</span><span aria-hidden="true" class="animate-bob text-[1.4rem] leading-none">↓</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contenu" class="container-site pb-[clamp(50px,7vw,80px)] pt-[clamp(60px,9vw,100px)]" style="--w:815px" aria-labelledby="intro-titre">
+      <h2 id="intro-titre" class="eyebrow font-sans font-normal">À propos</h2>
+      <p class="pb-10 pt-[30px] text-[clamp(1.125rem,1rem+0.4vw,1.25rem)] leading-[1.85] opacity-80">Lors de mon parcours d’étude, j’ai appris à créer des sites web et communiquer afin de promouvoir des produits ou évènements.</p>
+      <div class="text-center"><a href="/projets/" class="btn">Aller voir mes créations →</a></div>
+    </section>
+
+    <section class="container-site pb-[clamp(60px,9vw,100px)] pt-5" style="--w:1040px" aria-labelledby="outils-titre">
+      <p class="eyebrow">Outils &amp; compétences</p>
+      <h2 id="outils-titre" class="pt-[15px] text-[clamp(2rem,1.2rem+2.6vw,2.75rem)] leading-[1.5]">Mes outils :</h2>
+      <ul class="grid grid-cols-3 gap-2.5 pt-[50px] sm:grid-cols-4 sm:gap-4 lg:grid-cols-5">
+        {outils.map((o) => (
+          <li class="flex min-h-24 flex-col items-center justify-center gap-[11px] rounded-[15px] border border-gold/10 bg-navy px-2 py-3.5 transition hover:-translate-y-0.5 hover:border-gold/28 sm:min-h-[113px] sm:px-3 sm:py-5">
+            <img src={o.logo} alt="" width={o.w} height={o.h} class:list={["h-10 w-auto object-contain sm:h-[52px]", o.retourne && "-scale-y-100"]} />
+            <span class="text-[0.9rem] opacity-82">{o.nom}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <div class="container-site" style="--w:990px" aria-hidden="true">
+      <div class="flex justify-center gap-4 border-t border-gold/10 pt-[15px] text-[9px] text-gold">
+        <span class="opacity-45">◆</span><span class="opacity-22">◆</span><span class="opacity-45">◆</span>
+      </div>
+    </div>
+
+    <section class="container-site pb-[clamp(90px,12vw,160px)] pt-[clamp(50px,7vw,80px)]" aria-labelledby="projets-titre">
+      <div class="flex flex-wrap items-end justify-between gap-x-6 gap-y-4">
+        <div>
+          <p class="eyebrow">Réalisations</p>
+          <h2 id="projets-titre" class="pt-[15px] text-[clamp(2rem,1.2rem+2.6vw,2.75rem)] leading-[1.5]">Mes projets</h2>
+        </div>
+        <a href="/projets/" class="btn">Voir tous mes projets →</a>
+      </div>
+      <ul class="grid grid-cols-1 gap-6 pt-[50px] sm:grid-cols-2 lg:grid-cols-3">
+        {projets.map((p) => <li><ProjectCard projet={p} /></li>)}
+      </ul>
+    </section>
+  </main>
+</BaseLayout>

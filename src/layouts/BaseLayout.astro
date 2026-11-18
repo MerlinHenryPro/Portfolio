@@ -1,0 +1,42 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  /** Clé de la page active dans la navigation */
+  page?: string;
+}
+const { title, description, page } = Astro.props;
+---
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#060a14" />
+    <meta name="author" content="Merlin HENRY" />
+    <!-- Refus de l'utilisation des contenus par les IA (robots qui respectent ces signaux) -->
+    <meta name="robots" content="noai, noimageai" />
+    <meta name="tdm-reservation" content="1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,600;1,400&family=Outfit:wght@400;500;600&display=swap" />
+  </head>
+  <body>
+    <Header page={page} />
+    <slot />
+    <Footer />
+
+    <script>
+      // Dissuasion : pas de menu « Enregistrer l'image » ni de glisser-déposer sur les images
+      document.addEventListener("contextmenu", (e) => { if ((e.target as Element).closest("img")) e.preventDefault(); });
+      document.addEventListener("dragstart", (e) => { if ((e.target as Element).closest("img")) e.preventDefault(); });
+    </script>
+  </body>
+</html>

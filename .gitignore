@@ -1,9 +1,8 @@
 node_modules/
 dist/
-# Pages générées depuis src/pages (voir scripts/pages.ts)
-/src/*.html
 *.log
 
 
 # Config locale de l’éditeur
 /.claude/
+.astro/
