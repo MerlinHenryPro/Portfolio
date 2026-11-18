@@ -1,7 +1,7 @@
 # Portfolio — Merlin HENRY
 
 Site portfolio statique (HTML / CSS / TypeScript) construit avec **Bun**, adapté du Figma « Portfolio perso ».
-Responsive (mobile → grand écran), sans framework, publié sur **GitHub Pages**.
+Responsive (mobile → grand écran), sans framework, publié sur un **VPS Apache** (https://portfolio.merlinhenry.fr).
 
 ---
 
@@ -130,18 +130,40 @@ bun run preview
 
 Ouvre `http://localhost:4173` : c'est exactement ce qui sera en ligne.
 
-### 8. Mettre en ligne (GitHub Pages)
+### 8. Mettre en ligne (VPS Apache)
 
-**Une seule fois :** sur GitHub → dépôt *Portfolio* → **Settings → Pages → Source : GitHub Actions**.
+Le site est servi par **Apache** sur le VPS (`185.157.244.202`, port SSH `23040`, utilisateur `etudiant`)
+à l'adresse **https://portfolio.merlinhenry.fr**. C'est un site statique : pas de service à lancer,
+Apache sert directement le dossier `/var/www/portfolio/dist`.
 
-**Ensuite, à chaque mise à jour :**
+**Installation (une seule fois) :**
+1. Chez **Infomaniak** → domaine `merlinhenry.fr` → **Zone DNS** → ajoute un enregistrement
+   **A** : nom `portfolio`, valeur `185.157.244.202`.
+2. Connecte-toi au VPS et lance le script d'installation :
+   ```bash
+   ssh -p 23040 etudiant@185.157.244.202
+   ```
+   ```bash
+   curl -fsSL https://raw.githubusercontent.com/MerlinHenryPro/Portfolio/main/scripts/vps/installer.sh | bash
+   ```
+   Il installe ce qu'il faut (git, Bun, Apache, certbot), clone le dépôt dans `/var/www/portfolio`,
+   construit le site, crée le VirtualHost Apache (`/etc/apache2/sites-available/portfolio.conf`)
+   et le certificat HTTPS. Le mot de passe `sudo` est demandé.
+
+**À chaque mise à jour (depuis ton PC) :**
 ```bash
 git add .
 git commit -m "Description du changement"
 git push
+bun run deploy
 ```
-Dès que `main` reçoit des changements, GitHub construit et publie le site (onglet **Actions**, ~1 min).
-Adresse : **https://merlinhenrypro.github.io/Portfolio/**
+`bun run deploy` se connecte au VPS (mot de passe SSH demandé), récupère la dernière version de `main`
+et reconstruit le site. Rien d'autre à redémarrer.
+
+**Si quelque chose ne va pas (sur le VPS) :**
+```bash
+sudo tail -n 50 /var/log/apache2/portfolio-error.log
+```
 
 > Les commits sont signés avec ton nom (`git config user.name` / `user.email`) : tu es le seul contributeur.
 
