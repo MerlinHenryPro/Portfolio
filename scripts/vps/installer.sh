@@ -7,35 +7,29 @@
 #
 # Prérequis :
 #  - un enregistrement DNS « A » portfolio.merlinhenry.fr → 185.157.244.202 (Infomaniak)
-#  - git, Bun, Apache et certbot déjà installés sur le VPS (fait pendant le TP)
+#  - Apache et certbot déjà installés sur le VPS (fait pendant le TP)
+#  - le site déjà envoyé depuis le PC avec « bun run deploy »
+#
+# Le site n'est PAS construit sur le VPS : son processeur n'a pas les instructions AVX2
+# dont le compilateur d'Astro 7 a besoin. Il est construit sur le PC et seul dist/ est envoyé.
 # =============================================================================
 set -euo pipefail
 
 DOMAINE="${DOMAINE:-portfolio.merlinhenry.fr}"
-DEPOT="https://github.com/MerlinHenryPro/Portfolio.git"
 DOSSIER="/var/www/portfolio"
 EMAIL="${EMAIL:-henrymerlin.pro@gmail.com}"
 
-export PATH="$HOME/.bun/bin:$PATH"
-for outil in git bun apache2ctl certbot; do
+for outil in apache2ctl certbot; do
   command -v "$outil" >/dev/null 2>&1 || { echo "!! « $outil » est introuvable sur le VPS : installe-le puis relance ce script."; exit 1; }
 done
 
-echo "==> 1/4 Récupération du site dans $DOSSIER"
-sudo mkdir -p "$DOSSIER"
-sudo chown -R "$USER:$USER" "$DOSSIER"
-if [ -d "$DOSSIER/.git" ]; then
-  git -C "$DOSSIER" pull --ff-only origin main
-else
-  git clone "$DEPOT" "$DOSSIER"
+echo "==> 1/3 Vérification du site dans $DOSSIER/dist"
+if [ ! -f "$DOSSIER/dist/index.html" ]; then
+  echo "!! $DOSSIER/dist est vide. Depuis ton PC, lance d'abord : bun run deploy"
+  exit 1
 fi
 
-echo "==> 2/4 Construction du site (dist/)"
-cd "$DOSSIER"
-bun install --frozen-lockfile
-bun run build
-
-echo "==> 3/4 Configuration Apache pour $DOMAINE"
+echo "==> 2/3 Configuration Apache pour $DOMAINE"
 sudo a2enmod -q rewrite headers expires ssl >/dev/null
 sudo tee "/etc/apache2/sites-available/portfolio.conf" >/dev/null <<APACHE
 <VirtualHost *:80>
@@ -80,7 +74,7 @@ sudo a2ensite -q portfolio.conf >/dev/null
 sudo apache2ctl configtest
 sudo systemctl reload apache2
 
-echo "==> 4/4 Certificat HTTPS (Let's Encrypt)"
+echo "==> 3/3 Certificat HTTPS (Let's Encrypt)"
 if getent hosts "$DOMAINE" >/dev/null; then
   sudo certbot --apache -d "$DOMAINE" --non-interactive --agree-tos -m "$EMAIL" --redirect
 else

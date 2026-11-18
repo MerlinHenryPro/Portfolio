@@ -145,19 +145,26 @@ Le site est servi par **Apache** sur le VPS (`185.157.244.202`, port SSH `23040`
 à l'adresse **https://portfolio.merlinhenry.fr**. C'est un site statique : pas de service à lancer,
 Apache sert directement le dossier `/var/www/portfolio/dist`.
 
+> ⚠️ **Le site se construit sur le PC, pas sur le VPS.** Le processeur du VPS n'a pas les instructions
+> AVX2 dont le compilateur d'Astro 7 a besoin : `bun run build` y plante avec « Illegal instruction ».
+> On construit donc sur le PC, puis on envoie uniquement le dossier `dist/` au VPS.
+
 **Installation (une seule fois) :**
 1. Chez **Infomaniak** → domaine `merlinhenry.fr` → **Zone DNS** → ajoute un enregistrement
    **A** : nom `portfolio`, valeur `185.157.244.202`.
-2. Connecte-toi au VPS et lance le script d'installation :
+2. Depuis ton PC, construis et envoie le site (mot de passe SSH demandé) :
+   ```bash
+   bun run deploy
+   ```
+3. Connecte-toi au VPS et lance le script de configuration d'Apache :
    ```bash
    ssh -p 23040 etudiant@185.157.244.202
    ```
    ```bash
    curl -fsSL https://raw.githubusercontent.com/MerlinHenryPro/Portfolio/main/scripts/vps/installer.sh | bash
    ```
-   Il vérifie que git, Bun, Apache et certbot sont présents (déjà installés pendant le TP), clone le dépôt dans `/var/www/portfolio`,
-   construit le site, crée le VirtualHost Apache (`/etc/apache2/sites-available/portfolio.conf`)
-   et le certificat HTTPS. Le mot de passe `sudo` est demandé.
+   Il vérifie qu'Apache et certbot sont présents (déjà installés pendant le TP), crée le VirtualHost Apache
+   (`/etc/apache2/sites-available/portfolio.conf`) et le certificat HTTPS. Le mot de passe `sudo` est demandé.
 
 **À chaque mise à jour (depuis ton PC) :**
 ```bash
@@ -166,8 +173,9 @@ git commit -m "Description du changement"
 git push
 bun run deploy
 ```
-`bun run deploy` se connecte au VPS (mot de passe SSH demandé), récupère la dernière version de `main`
-et reconstruit le site. Rien d'autre à redémarrer.
+`bun run deploy` construit le site sur ton PC, puis l'envoie au VPS en une seule connexion
+(mot de passe SSH demandé). Le nouveau `dist/` remplace l'ancien d'un coup : le site n'est jamais coupé.
+Rien d'autre à redémarrer.
 
 **Si quelque chose ne va pas (sur le VPS) :**
 ```bash
