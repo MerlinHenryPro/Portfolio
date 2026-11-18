@@ -1,0 +1,17 @@
+{
+  "name": "portfolio-merlin-henry",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "images": "bun scripts/images.ts",
+    "dev": "bun scripts/dev.ts",
+    "pages": "bun scripts/pages.ts",
+    "shaders": "bun scripts/shaders.ts",
+    "build": "bun scripts/build.ts",
+    "preview": "bun scripts/preview.ts"
+  },
+  "devDependencies": {
+    "exiftool-vendored": "^39.4.0",
+    "sharp": "^0.35.5"
+  }
+}

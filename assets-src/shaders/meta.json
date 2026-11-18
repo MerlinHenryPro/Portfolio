@@ -1,0 +1,1196 @@
+{
+ "Material": {
+  "groups": {},
+  "links": [
+   [
+    "Refraction BSDF",
+    "BSDF",
+    0,
+    "Material Output",
+    "Surface",
+    0
+   ],
+   [
+    "Texture Coordinate",
+    "Object",
+    0,
+    "Vector Math",
+    "Vector",
+    0
+   ],
+   [
+    "Math.005",
+    "Value",
+    0,
+    "Refraction BSDF",
+    "IOR",
+    0
+   ],
+   [
+    "Math.008",
+    "Value",
+    0,
+    "Math",
+    "Value",
+    0
+   ],
+   [
+    "Vector Math",
+    "Value",
+    0,
+    "Math.001",
+    "Value",
+    0
+   ],
+   [
+    "Math.001",
+    "Value",
+    0,
+    "Math.002",
+    "Value",
+    0
+   ],
+   [
+    "Math.002",
+    "Value",
+    0,
+    "Math.003",
+    "Value",
+    0
+   ],
+   [
+    "Layer Weight",
+    "Facing",
+    0,
+    "Color Ramp",
+    "Fac",
+    0
+   ],
+   [
+    "Math.003",
+    "Value",
+    0,
+    "Math.004",
+    "Value",
+    0
+   ],
+   [
+    "Color Ramp",
+    "Color",
+    0,
+    "Math.004",
+    "Value",
+    1
+   ],
+   [
+    "Math",
+    "Value",
+    0,
+    "Math.005",
+    "Value",
+    0
+   ],
+   [
+    "Math.004",
+    "Value",
+    0,
+    "Math.006",
+    "Value",
+    0
+   ],
+   [
+    "Math.006",
+    "Value",
+    0,
+    "Math.007",
+    "Value",
+    0
+   ],
+   [
+    "Math.007",
+    "Value",
+    0,
+    "Math.008",
+    "Value",
+    0
+   ],
+   [
+    "Texture Coordinate.001",
+    "Object",
+    0,
+    "Vector Math.001",
+    "Vector",
+    0
+   ],
+   [
+    "Vector Math.001",
+    "Value",
+    0,
+    "Map Range",
+    "Value",
+    0
+   ],
+   [
+    "Map Range",
+    "Result",
+    0,
+    "Refraction BSDF",
+    "Color",
+    0
+   ]
+  ],
+  "curves": {},
+  "labels": {}
+ },
+ "Material.001": {
+  "groups": {
+   "Group": "Cartesian Coordinates",
+   "Group.001": "Spherical Coordinates"
+  },
+  "links": [
+   [
+    "Emission",
+    "Emission",
+    0,
+    "Material Output",
+    "Surface",
+    0
+   ],
+   [
+    "Checker Texture",
+    "Color",
+    0,
+    "Emission",
+    "Color",
+    0
+   ],
+   [
+    "Texture Coordinate",
+    "Object",
+    0,
+    "Group.001",
+    "Vector",
+    0
+   ],
+   [
+    "Group.001",
+    "Radius",
+    0,
+    "Group",
+    "Radius",
+    0
+   ],
+   [
+    "Group.001",
+    "Theta",
+    0,
+    "Group",
+    "Theta",
+    0
+   ],
+   [
+    "Group.001",
+    "Phi",
+    0,
+    "Group",
+    "Phi",
+    0
+   ],
+   [
+    "Group.001",
+    "Radius",
+    0,
+    "Combine XYZ",
+    "X",
+    0
+   ],
+   [
+    "Group.001",
+    "Theta",
+    0,
+    "Combine XYZ",
+    "Y",
+    0
+   ],
+   [
+    "Math",
+    "Value",
+    0,
+    "Combine XYZ",
+    "Z",
+    0
+   ],
+   [
+    "Combine XYZ",
+    "Vector",
+    0,
+    "Checker Texture",
+    "Vector",
+    0
+   ],
+   [
+    "Group.001",
+    "Phi",
+    0,
+    "Math",
+    "Value",
+    0
+   ]
+  ],
+  "curves": {},
+  "labels": {}
+ },
+ "Material.002": {
+  "groups": {},
+  "links": [
+   [
+    "Emission",
+    "Emission",
+    0,
+    "Material Output",
+    "Surface",
+    0
+   ]
+  ],
+  "curves": {},
+  "labels": {}
+ },
+ "Material.003": {
+  "groups": {
+   "Group.005": "Cartesian Coordinates",
+   "Group.006": "Spherical Coordinates",
+   "Group.007": "Twist",
+   "Group.009": "Cartesian Coordinates",
+   "Group.010": "Spherical Coordinates",
+   "Group.011": "Twist",
+   "Group.012": "Spiraling",
+   "Group": "Thickness",
+   "Group.002": "Cartesian Coordinates",
+   "Group.001": "Spherical Coordinates",
+   "Group.003": "Twist",
+   "Group.004": "Spiraling",
+   "Group.008": "Spiraling",
+   "Group.013": "Cartesian Coordinates",
+   "Group.014": "Spherical Coordinates",
+   "Group.015": "Twist",
+   "Group.016": "Cartesian Coordinates",
+   "Group.017": "Spherical Coordinates",
+   "Group.018": "Twist",
+   "Group.019": "Spiraling",
+   "Group.021": "Cartesian Coordinates",
+   "Group.022": "Spherical Coordinates",
+   "Group.023": "Twist",
+   "Group.024": "Spiraling",
+   "Group.025": "Spiraling",
+   "Group.020": "Thickness"
+  },
+  "links": [
+   [
+    "Add Shader",
+    "Shader",
+    0,
+    "Material Output",
+    "Volume",
+    0
+   ],
+   [
+    "Texture Coordinate",
+    "Object",
+    0,
+    "Vector Math",
+    "Vector",
+    0
+   ],
+   [
+    "Vector Math",
+    "Value",
+    0,
+    "Map Range",
+    "Value",
+    0
+   ],
+   [
+    "Map Range",
+    "Result",
+    0,
+    "Float Curve",
+    "Value",
+    0
+   ],
+   [
+    "Math.011",
+    "Value",
+    0,
+    "Emission",
+    "Strength",
+    0
+   ],
+   [
+    "Float Curve",
+    "Value",
+    0,
+    "Math",
+    "Value",
+    0
+   ],
+   [
+    "Texture Coordinate",
+    "Object",
+    0,
+    "Separate XYZ",
+    "Vector",
+    0
+   ],
+   [
+    "Separate XYZ",
+    "Z",
+    0,
+    "Math.001",
+    "Value",
+    0
+   ],
+   [
+    "Math.001",
+    "Value",
+    0,
+    "Math.002",
+    "Value",
+    0
+   ],
+   [
+    "Math.002",
+    "Value",
+    0,
+    "Map Range.001",
+    "Value",
+    0
+   ],
+   [
+    "Map Range.001",
+    "Result",
+    0,
+    "Float Curve.001",
+    "Value",
+    0
+   ],
+   [
+    "Math",
+    "Value",
+    0,
+    "Math.003",
+    "Value",
+    0
+   ],
+   [
+    "Float Curve.001",
+    "Value",
+    0,
+    "Math.003",
+    "Value",
+    1
+   ],
+   [
+    "Group",
+    "Value",
+    0,
+    "Math.004",
+    "Value",
+    0
+   ],
+   [
+    "Math.004",
+    "Value",
+    0,
+    "Map Range.001",
+    "From Min",
+    0
+   ],
+   [
+    "Group",
+    "Value",
+    0,
+    "Map Range.001",
+    "From Max",
+    0
+   ],
+   [
+    "Musgrave Texture",
+    "Fac",
+    0,
+    "Map Range.002",
+    "Value",
+    0
+   ],
+   [
+    "Map Range.002",
+    "Result",
+    0,
+    "Math.001",
+    "Value",
+    1
+   ],
+   [
+    "Group.001",
+    "Radius",
+    0,
+    "Group.002",
+    "Radius",
+    0
+   ],
+   [
+    "Math.005",
+    "Value",
+    0,
+    "Group.002",
+    "Theta",
+    0
+   ],
+   [
+    "Math.006",
+    "Value",
+    0,
+    "Group.002",
+    "Phi",
+    0
+   ],
+   [
+    "Vector Math.001",
+    "Vector",
+    0,
+    "Group.001",
+    "Vector",
+    0
+   ],
+   [
+    "Group.002",
+    "Vector",
+    0,
+    "Musgrave Texture",
+    "Vector",
+    0
+   ],
+   [
+    "Texture Coordinate.001",
+    "Object",
+    0,
+    "Vector Math.001",
+    "Vector",
+    0
+   ],
+   [
+    "Group.001",
+    "Theta",
+    0,
+    "Math.005",
+    "Value",
+    0
+   ],
+   [
+    "Group.003",
+    "Value",
+    0,
+    "Math.005",
+    "Value",
+    1
+   ],
+   [
+    "Group.001",
+    "Phi",
+    0,
+    "Math.006",
+    "Value",
+    0
+   ],
+   [
+    "Group.004",
+    "Result",
+    0,
+    "Math.006",
+    "Value",
+    1
+   ],
+   [
+    "Group.006",
+    "Radius",
+    0,
+    "Group.005",
+    "Radius",
+    0
+   ],
+   [
+    "Math.007",
+    "Value",
+    0,
+    "Group.005",
+    "Theta",
+    0
+   ],
+   [
+    "Math.008",
+    "Value",
+    0,
+    "Group.005",
+    "Phi",
+    0
+   ],
+   [
+    "Vector Math.002",
+    "Vector",
+    0,
+    "Group.006",
+    "Vector",
+    0
+   ],
+   [
+    "Group.005",
+    "Vector",
+    0,
+    "Musgrave Texture.001",
+    "Vector",
+    0
+   ],
+   [
+    "Texture Coordinate.002",
+    "Object",
+    0,
+    "Vector Math.002",
+    "Vector",
+    0
+   ],
+   [
+    "Group.006",
+    "Theta",
+    0,
+    "Math.007",
+    "Value",
+    0
+   ],
+   [
+    "Group.007",
+    "Value",
+    0,
+    "Math.007",
+    "Value",
+    1
+   ],
+   [
+    "Group.006",
+    "Phi",
+    0,
+    "Math.008",
+    "Value",
+    0
+   ],
+   [
+    "Group.008",
+    "Result",
+    0,
+    "Math.008",
+    "Value",
+    1
+   ],
+   [
+    "Group.010",
+    "Radius",
+    0,
+    "Group.009",
+    "Radius",
+    0
+   ],
+   [
+    "Math.009",
+    "Value",
+    0,
+    "Group.009",
+    "Theta",
+    0
+   ],
+   [
+    "Math.010",
+    "Value",
+    0,
+    "Group.009",
+    "Phi",
+    0
+   ],
+   [
+    "Vector Math.002",
+    "Vector",
+    0,
+    "Group.010",
+    "Vector",
+    0
+   ],
+   [
+    "Group.009",
+    "Vector",
+    0,
+    "Musgrave Texture.002",
+    "Vector",
+    0
+   ],
+   [
+    "Group.010",
+    "Theta",
+    0,
+    "Math.009",
+    "Value",
+    0
+   ],
+   [
+    "Group.011",
+    "Value",
+    0,
+    "Math.009",
+    "Value",
+    1
+   ],
+   [
+    "Group.010",
+    "Phi",
+    0,
+    "Math.010",
+    "Value",
+    0
+   ],
+   [
+    "Group.012",
+    "Result",
+    0,
+    "Math.010",
+    "Value",
+    1
+   ],
+   [
+    "Math.003",
+    "Value",
+    0,
+    "Math.011",
+    "Value",
+    0
+   ],
+   [
+    "Math.015",
+    "Value",
+    0,
+    "Math.012",
+    "Value",
+    0
+   ],
+   [
+    "Math.014",
+    "Value",
+    0,
+    "Math.012",
+    "Value",
+    1
+   ],
+   [
+    "Math.016",
+    "Value",
+    0,
+    "Math.011",
+    "Value",
+    1
+   ],
+   [
+    "Musgrave Texture.001",
+    "Fac",
+    0,
+    "Math.013",
+    "Value",
+    0
+   ],
+   [
+    "Math.013",
+    "Value",
+    0,
+    "Math.014",
+    "Value",
+    0
+   ],
+   [
+    "Musgrave Texture.002",
+    "Fac",
+    0,
+    "Math.015",
+    "Value",
+    0
+   ],
+   [
+    "Math.012",
+    "Value",
+    0,
+    "Math.016",
+    "Value",
+    0
+   ],
+   [
+    "Texture Coordinate.004",
+    "Object",
+    0,
+    "Vector Math.004",
+    "Vector",
+    0
+   ],
+   [
+    "Vector Math.004",
+    "Value",
+    0,
+    "Map Range.003",
+    "Value",
+    0
+   ],
+   [
+    "Map Range.003",
+    "Result",
+    0,
+    "Float Curve.002",
+    "Value",
+    0
+   ],
+   [
+    "Float Curve.002",
+    "Value",
+    0,
+    "Math.022",
+    "Value",
+    0
+   ],
+   [
+    "Texture Coordinate.004",
+    "Object",
+    0,
+    "Separate XYZ.001",
+    "Vector",
+    0
+   ],
+   [
+    "Separate XYZ.001",
+    "Z",
+    0,
+    "Math.023",
+    "Value",
+    0
+   ],
+   [
+    "Math.023",
+    "Value",
+    0,
+    "Math.024",
+    "Value",
+    0
+   ],
+   [
+    "Math.024",
+    "Value",
+    0,
+    "Map Range.004",
+    "Value",
+    0
+   ],
+   [
+    "Map Range.004",
+    "Result",
+    0,
+    "Float Curve.003",
+    "Value",
+    0
+   ],
+   [
+    "Math.022",
+    "Value",
+    0,
+    "Math.021",
+    "Value",
+    0
+   ],
+   [
+    "Float Curve.003",
+    "Value",
+    0,
+    "Math.021",
+    "Value",
+    1
+   ],
+   [
+    "Reroute",
+    "Output",
+    0,
+    "Math.025",
+    "Value",
+    0
+   ],
+   [
+    "Math.025",
+    "Value",
+    0,
+    "Map Range.004",
+    "From Min",
+    0
+   ],
+   [
+    "Reroute",
+    "Output",
+    0,
+    "Map Range.004",
+    "From Max",
+    0
+   ],
+   [
+    "Musgrave Texture.004",
+    "Fac",
+    0,
+    "Map Range.005",
+    "Value",
+    0
+   ],
+   [
+    "Map Range.005",
+    "Result",
+    0,
+    "Math.023",
+    "Value",
+    1
+   ],
+   [
+    "Group.022",
+    "Radius",
+    0,
+    "Group.021",
+    "Radius",
+    0
+   ],
+   [
+    "Math.026",
+    "Value",
+    0,
+    "Group.021",
+    "Theta",
+    0
+   ],
+   [
+    "Math.027",
+    "Value",
+    0,
+    "Group.021",
+    "Phi",
+    0
+   ],
+   [
+    "Vector Math.005",
+    "Vector",
+    0,
+    "Group.022",
+    "Vector",
+    0
+   ],
+   [
+    "Group.021",
+    "Vector",
+    0,
+    "Musgrave Texture.004",
+    "Vector",
+    0
+   ],
+   [
+    "Texture Coordinate.005",
+    "Object",
+    0,
+    "Vector Math.005",
+    "Vector",
+    0
+   ],
+   [
+    "Group.022",
+    "Theta",
+    0,
+    "Math.026",
+    "Value",
+    0
+   ],
+   [
+    "Group.023",
+    "Value",
+    0,
+    "Math.026",
+    "Value",
+    1
+   ],
+   [
+    "Group.022",
+    "Phi",
+    0,
+    "Math.027",
+    "Value",
+    0
+   ],
+   [
+    "Group.024",
+    "Result",
+    0,
+    "Math.027",
+    "Value",
+    1
+   ],
+   [
+    "Group.014",
+    "Radius",
+    0,
+    "Group.013",
+    "Radius",
+    0
+   ],
+   [
+    "Math.017",
+    "Value",
+    0,
+    "Group.013",
+    "Theta",
+    0
+   ],
+   [
+    "Math.018",
+    "Value",
+    0,
+    "Group.013",
+    "Phi",
+    0
+   ],
+   [
+    "Vector Math.003",
+    "Vector",
+    0,
+    "Group.014",
+    "Vector",
+    0
+   ],
+   [
+    "Group.013",
+    "Vector",
+    0,
+    "Musgrave Texture.003",
+    "Vector",
+    0
+   ],
+   [
+    "Texture Coordinate.003",
+    "Object",
+    0,
+    "Vector Math.003",
+    "Vector",
+    0
+   ],
+   [
+    "Group.014",
+    "Theta",
+    0,
+    "Math.017",
+    "Value",
+    0
+   ],
+   [
+    "Group.015",
+    "Value",
+    0,
+    "Math.017",
+    "Value",
+    1
+   ],
+   [
+    "Group.014",
+    "Phi",
+    0,
+    "Math.018",
+    "Value",
+    0
+   ],
+   [
+    "Group.025",
+    "Result",
+    0,
+    "Math.018",
+    "Value",
+    1
+   ],
+   [
+    "Group.017",
+    "Radius",
+    0,
+    "Group.016",
+    "Radius",
+    0
+   ],
+   [
+    "Math.019",
+    "Value",
+    0,
+    "Group.016",
+    "Theta",
+    0
+   ],
+   [
+    "Math.020",
+    "Value",
+    0,
+    "Group.016",
+    "Phi",
+    0
+   ],
+   [
+    "Vector Math.003",
+    "Vector",
+    0,
+    "Group.017",
+    "Vector",
+    0
+   ],
+   [
+    "Group.016",
+    "Vector",
+    0,
+    "Musgrave Texture.005",
+    "Vector",
+    0
+   ],
+   [
+    "Group.017",
+    "Theta",
+    0,
+    "Math.019",
+    "Value",
+    0
+   ],
+   [
+    "Group.018",
+    "Value",
+    0,
+    "Math.019",
+    "Value",
+    1
+   ],
+   [
+    "Group.017",
+    "Phi",
+    0,
+    "Math.020",
+    "Value",
+    0
+   ],
+   [
+    "Group.019",
+    "Result",
+    0,
+    "Math.020",
+    "Value",
+    1
+   ],
+   [
+    "Math.021",
+    "Value",
+    0,
+    "Math.028",
+    "Value",
+    0
+   ],
+   [
+    "Math.031",
+    "Value",
+    0,
+    "Math.032",
+    "Value",
+    0
+   ],
+   [
+    "Math.030",
+    "Value",
+    0,
+    "Math.032",
+    "Value",
+    1
+   ],
+   [
+    "Math.033",
+    "Value",
+    0,
+    "Math.028",
+    "Value",
+    1
+   ],
+   [
+    "Musgrave Texture.003",
+    "Fac",
+    0,
+    "Math.029",
+    "Value",
+    0
+   ],
+   [
+    "Math.029",
+    "Value",
+    0,
+    "Math.030",
+    "Value",
+    0
+   ],
+   [
+    "Musgrave Texture.005",
+    "Fac",
+    0,
+    "Math.031",
+    "Value",
+    0
+   ],
+   [
+    "Math.032",
+    "Value",
+    0,
+    "Math.033",
+    "Value",
+    0
+   ],
+   [
+    "Math.028",
+    "Value",
+    0,
+    "Volume Absorption",
+    "Density",
+    0
+   ],
+   [
+    "Emission",
+    "Emission",
+    0,
+    "Add Shader",
+    "Shader",
+    1
+   ],
+   [
+    "Volume Absorption",
+    "Volume",
+    0,
+    "Add Shader",
+    "Shader",
+    0
+   ],
+   [
+    "Math.034",
+    "Value",
+    0,
+    "Reroute",
+    "Input",
+    0
+   ],
+   [
+    "Group.020",
+    "Value",
+    0,
+    "Math.034",
+    "Value",
+    0
+   ]
+  ],
+  "curves": {},
+  "labels": {}
+ }
+}

@@ -1,0 +1,7 @@
+# Les contenus de ce site (textes, images, rendus 3D) ne peuvent pas être utilisés
+# pour entraîner, affiner ou alimenter des modèles d'intelligence artificielle.
+User-Agent: *
+Disallow: /
+Disallow: *.webp
+Disallow: *.png
+Disallow: *.jpg

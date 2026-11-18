@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <!-- @head -->
+  <title>Les shaders en 3D — Merlin HENRY</title>
+  <meta name="description" content="Apprentissage de Blender : création d’un trou noir avec les shader nodes. Arbres de nodes interactifs, étapes et rendu final.">
+</head>
+<body data-page="projets">
+  <!-- @header -->
+
+  <main id="contenu">
+    <article class="article container">
+      <header class="article__hero">
+        <p class="eyebrow"><a href="./projets">Réalisations</a> &gt; Apprentissage 3D</p>
+        <span class="tag">Création 3D</span>
+        <h1 class="article__title">Les shaders en 3D :</h1>
+        <p class="article__lead">Ce projet consistait à apprendre l’utilisation de Blender afin de créer un trou noir avec une grosse utilisation des shader nodes de Blender.</p>
+      </header>
+
+      <section class="step" aria-labelledby="s1">
+        <div class="step__head"><p class="step__num">01. Inspiration &amp; Mise en place</p><h2 class="step__title" id="s1">Référence visuelle et setup initial</h2></div>
+        <figure class="figure">
+          <img src="./img/references/gargantua-interstellar.webp" alt="Le trou noir Gargantua du film Interstellar" width="1600" height="669" loading="lazy" style="aspect-ratio:16/9;object-fit:cover">
+          <figcaption>Référence visuelle principale : le trou noir Gargantua du film Interstellar. Cette image a guidé la direction artistique du projet, notamment pour la distorsion de l’espace et la composition du disque d’accrétion.</figcaption>
+        </figure>
+      </section>
+
+      <section class="step" aria-labelledby="s2">
+        <div class="step__head"><p class="step__num">02. Construction de la scène</p><h2 class="step__title" id="s2">Géométrie et volume de départ</h2></div>
+        <figure class="figure">
+          <img src="./img/shaders-3d/construction-scene.webp" alt="Géométrie simple de la scène dans Blender : sphère et disque d’accrétion" width="1920" height="1198" loading="lazy">
+          <figcaption>Capture de la géométrie simple dans Blender. Cette étape a servi à définir le volume de base, les proportions et la structure de la scène avant l’ajout des effets de matière. Le disque d’accrétion est carré car la forme n’a aucun effet à cette taille sur ses shaders.</figcaption>
+        </figure>
+      </section>
+
+      <section class="step" aria-labelledby="s3">
+        <div class="step__head"><p class="step__num">03. Construction du shader</p><h2 class="step__title" id="s3">Réseau de shader nodes</h2></div>
+        <div class="figures">
+          <figure class="figure">
+            <div class="node-viewer" data-graph="material-001"></div>
+            <figcaption>Réseau de shader nodes utilisé pour construire le matériau du trou noir. Cette étape a permis de passer d’un volume simple à une surface réactive et dynamique.</figcaption>
+          </figure>
+          <figure class="figure">
+            <div class="node-viewer" data-graph="material"></div>
+            <figcaption>Détail du shader de réfraction et du comportement du matériau à l’horizon du trou noir. Cette configuration permet d’obtenir une transition fluide entre les zones sombres et lumineuses.</figcaption>
+          </figure>
+          <figure class="figure">
+            <div class="node-viewer node-viewer--tall" data-graph="material-003"></div>
+            <figcaption>Vue globale de l’arborescence complète du shader du disque d’accrétion. Cette structure complexe gère les couleurs, la température et la luminosité du disque. Le développement de ce shader a pris le plus de temps sur le projet.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="step" aria-labelledby="s4">
+        <div class="step__head"><p class="step__num">04. Test de volume &amp; matière</p><h2 class="step__title" id="s4">Premiers essais de shaders</h2></div>
+        <figure class="figure">
+          <img src="./img/shaders-3d/test-volume.webp" alt="Aperçu du volume du trou noir avec dégradé et anneau dans la vue Blender" width="1783" height="620" loading="lazy" style="aspect-ratio:908/660;object-fit:cover">
+          <figcaption>Aperçu de la sphère/volume avec dégradé et anneau. Cette étape a permis de valider la position du trou noir et de la caméra ainsi que les paramètres des shaders</figcaption>
+        </figure>
+      </section>
+
+      <section class="step" aria-labelledby="s5">
+        <div class="step__head"><p class="step__num">05. Aperçu de rendu</p><h2 class="step__title" id="s5">Echantillonage</h2></div>
+        <figure class="figure">
+          <img src="./img/shaders-3d/apercu-rendu.webp" alt="Rendu noir et blanc non fini du trou noir, avec du grain" width="1919" height="1084" loading="lazy">
+          <figcaption>Rendu noir et blanc du trou noir dans Blender non fini, mais qui permet de se donner une idée du résultat final, le grain vient du fait que blender calcule petit a petit le résultat des shaders par échantillons.</figcaption>
+        </figure>
+      </section>
+
+      <section class="step" aria-labelledby="s6">
+        <div class="step__head"><p class="step__num">06. Résultat Final</p><h2 class="step__title" id="s6">Le rendu final</h2></div>
+        <figure class="figure figure--contain">
+          <img src="./img/projets/projet-3d.webp" alt="Rendu final du trou noir : le disque d’accrétion courbé autour de l’horizon" width="1920" height="1080" loading="lazy">
+          <figcaption>Vue finale du projet. Le disque d’accrétion du trou noir courbe bel et bien autour du centre du trou noir, en simulant directement le chemin de la lumière autour du trou noir et du disque d’accrétion.</figcaption>
+        </figure>
+      </section>
+
+      <section class="conclusion">
+        <h2>Conclusion</h2>
+        <p>Ce projet a été une expérience très intéressante dans l’apprentissage de Blender. Il m’a permis de me familiariser avec les shader nodes et leur complexité.</p>
+      </section>
+    </article>
+  </main>
+
+  <!-- @footer -->
+</body>
+</html>

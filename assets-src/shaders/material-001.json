@@ -1,0 +1,501 @@
+{
+    "proyecto": "Material.001",
+    "nodos": [
+        {
+            "id_interno": "Material Output",
+            "tipo": "ShaderNodeOutputMaterial",
+            "etiqueta": "Material Output",
+            "posicion": {
+                "x": 413.0,
+                "y": 300.0
+            },
+            "dimensiones": {
+                "ancho": 140.0,
+                "alto": 100.0
+            },
+            "es_marco": false,
+            "color_fondo": null,
+            "puertos_entrada": [
+                {
+                    "nombre": "Surface",
+                    "tipo_dato": "SHADER",
+                    "conectado": true,
+                    "valor": null,
+                    "oculto": false
+                },
+                {
+                    "nombre": "Volume",
+                    "tipo_dato": "SHADER",
+                    "conectado": false,
+                    "valor": null,
+                    "oculto": false
+                },
+                {
+                    "nombre": "Displacement",
+                    "tipo_dato": "VECTOR",
+                    "conectado": false,
+                    "valor": [
+                        "0.000",
+                        "0.000",
+                        "0.000"
+                    ],
+                    "oculto": false
+                }
+            ],
+            "puertos_salida": [],
+            "opciones_lista": [],
+            "color_ramp_data": null,
+            "rgb_color": null,
+            "padre": null,
+            "minimizado": false
+        },
+        {
+            "id_interno": "Emission",
+            "tipo": "ShaderNodeEmission",
+            "etiqueta": "Emission",
+            "posicion": {
+                "x": 180.64170837402344,
+                "y": 247.51914978027344
+            },
+            "dimensiones": {
+                "ancho": 140.0,
+                "alto": 100.0
+            },
+            "es_marco": false,
+            "color_fondo": null,
+            "puertos_entrada": [
+                {
+                    "nombre": "Color",
+                    "tipo_dato": "RGBA",
+                    "conectado": true,
+                    "valor": null,
+                    "oculto": false
+                },
+                {
+                    "nombre": "Strength",
+                    "tipo_dato": "VALUE",
+                    "conectado": false,
+                    "valor": "1.000",
+                    "oculto": false
+                }
+            ],
+            "puertos_salida": [
+                {
+                    "nombre": "Emission",
+                    "tipo_dato": "SHADER",
+                    "conectado": true,
+                    "oculto": false
+                }
+            ],
+            "opciones_lista": [],
+            "color_ramp_data": null,
+            "rgb_color": null,
+            "padre": null,
+            "minimizado": false
+        },
+        {
+            "id_interno": "Checker Texture",
+            "tipo": "ShaderNodeTexChecker",
+            "etiqueta": "Checker Texture",
+            "posicion": {
+                "x": -31.449935913085938,
+                "y": 242.11785888671875
+            },
+            "dimensiones": {
+                "ancho": 140.0,
+                "alto": 100.0
+            },
+            "es_marco": false,
+            "color_fondo": null,
+            "puertos_entrada": [
+                {
+                    "nombre": "Vector",
+                    "tipo_dato": "VECTOR",
+                    "conectado": true,
+                    "valor": null,
+                    "oculto": false
+                },
+                {
+                    "nombre": "Color1",
+                    "tipo_dato": "RGBA",
+                    "conectado": false,
+                    "valor": [
+                        "0.800",
+                        "0.800",
+                        "0.800",
+                        "1.000"
+                    ],
+                    "oculto": false
+                },
+                {
+                    "nombre": "Color2",
+                    "tipo_dato": "RGBA",
+                    "conectado": false,
+                    "valor": [
+                        "0.110",
+                        "0.110",
+                        "0.110",
+                        "1.000"
+                    ],
+                    "oculto": false
+                },
+                {
+                    "nombre": "Scale",
+                    "tipo_dato": "VALUE",
+                    "conectado": false,
+                    "valor": "0.100",
+                    "oculto": false
+                }
+            ],
+            "puertos_salida": [
+                {
+                    "nombre": "Color",
+                    "tipo_dato": "RGBA",
+                    "conectado": true,
+                    "oculto": false
+                },
+                {
+                    "nombre": "Fac",
+                    "tipo_dato": "VALUE",
+                    "conectado": false,
+                    "oculto": false
+                }
+            ],
+            "opciones_lista": [],
+            "color_ramp_data": null,
+            "rgb_color": null,
+            "padre": null,
+            "minimizado": false
+        },
+        {
+            "id_interno": "Texture Coordinate",
+            "tipo": "ShaderNodeTexCoord",
+            "etiqueta": "Texture Coordinate",
+            "posicion": {
+                "x": -1015.721923828125,
+                "y": 324.0602111816406
+            },
+            "dimensiones": {
+                "ancho": 140.0,
+                "alto": 100.0
+            },
+            "es_marco": false,
+            "color_fondo": null,
+            "puertos_entrada": [],
+            "puertos_salida": [
+                {
+                    "nombre": "Generated",
+                    "tipo_dato": "VECTOR",
+                    "conectado": false,
+                    "oculto": false
+                },
+                {
+                    "nombre": "Normal",
+                    "tipo_dato": "VECTOR",
+                    "conectado": false,
+                    "oculto": false
+                },
+                {
+                    "nombre": "UV",
+                    "tipo_dato": "VECTOR",
+                    "conectado": false,
+                    "oculto": false
+                },
+                {
+                    "nombre": "Object",
+                    "tipo_dato": "VECTOR",
+                    "conectado": true,
+                    "oculto": false
+                },
+                {
+                    "nombre": "Camera",
+                    "tipo_dato": "VECTOR",
+                    "conectado": false,
+                    "oculto": false
+                },
+                {
+                    "nombre": "Window",
+                    "tipo_dato": "VECTOR",
+                    "conectado": false,
+                    "oculto": false
+                },
+                {
+                    "nombre": "Reflection",
+                    "tipo_dato": "VECTOR",
+                    "conectado": false,
+                    "oculto": false
+                }
+            ],
+            "opciones_lista": [],
+            "color_ramp_data": null,
+            "rgb_color": null,
+            "padre": null,
+            "minimizado": false
+        },
+        {
+            "id_interno": "Group",
+            "tipo": "ShaderNodeGroup",
+            "etiqueta": "Group",
+            "posicion": {
+                "x": -457.5373229980469,
+                "y": 430.49456787109375
+            },
+            "dimensiones": {
+                "ancho": 140.0,
+                "alto": 100.0
+            },
+            "es_marco": false,
+            "color_fondo": null,
+            "puertos_entrada": [
+                {
+                    "nombre": "Radius",
+                    "tipo_dato": "VALUE",
+                    "conectado": true,
+                    "valor": null,
+                    "oculto": false
+                },
+                {
+                    "nombre": "Theta",
+                    "tipo_dato": "VALUE",
+                    "conectado": true,
+                    "valor": null,
+                    "oculto": false
+                },
+                {
+                    "nombre": "Phi",
+                    "tipo_dato": "VALUE",
+                    "conectado": true,
+                    "valor": null,
+                    "oculto": false
+                }
+            ],
+            "puertos_salida": [
+                {
+                    "nombre": "Vector",
+                    "tipo_dato": "VECTOR",
+                    "conectado": false,
+                    "oculto": false
+                }
+            ],
+            "opciones_lista": [],
+            "color_ramp_data": null,
+            "rgb_color": null,
+            "padre": null,
+            "minimizado": false
+        },
+        {
+            "id_interno": "Group.001",
+            "tipo": "ShaderNodeGroup",
+            "etiqueta": "Group.001",
+            "posicion": {
+                "x": -774.120361328125,
+                "y": 275.7042236328125
+            },
+            "dimensiones": {
+                "ancho": 140.0,
+                "alto": 100.0
+            },
+            "es_marco": false,
+            "color_fondo": null,
+            "puertos_entrada": [
+                {
+                    "nombre": "Vector",
+                    "tipo_dato": "VECTOR",
+                    "conectado": true,
+                    "valor": null,
+                    "oculto": false
+                }
+            ],
+            "puertos_salida": [
+                {
+                    "nombre": "Radius",
+                    "tipo_dato": "VALUE",
+                    "conectado": true,
+                    "oculto": false
+                },
+                {
+                    "nombre": "Theta",
+                    "tipo_dato": "VALUE",
+                    "conectado": true,
+                    "oculto": false
+                },
+                {
+                    "nombre": "Phi",
+                    "tipo_dato": "VALUE",
+                    "conectado": true,
+                    "oculto": false
+                }
+            ],
+            "opciones_lista": [],
+            "color_ramp_data": null,
+            "rgb_color": null,
+            "padre": null,
+            "minimizado": false
+        },
+        {
+            "id_interno": "Combine XYZ",
+            "tipo": "ShaderNodeCombineXYZ",
+            "etiqueta": "Combine XYZ",
+            "posicion": {
+                "x": -334.1227111816406,
+                "y": 211.6313018798828
+            },
+            "dimensiones": {
+                "ancho": 140.0,
+                "alto": 100.0
+            },
+            "es_marco": false,
+            "color_fondo": null,
+            "puertos_entrada": [
+                {
+                    "nombre": "X",
+                    "tipo_dato": "VALUE",
+                    "conectado": true,
+                    "valor": null,
+                    "oculto": false
+                },
+                {
+                    "nombre": "Y",
+                    "tipo_dato": "VALUE",
+                    "conectado": true,
+                    "valor": null,
+                    "oculto": false
+                },
+                {
+                    "nombre": "Z",
+                    "tipo_dato": "VALUE",
+                    "conectado": true,
+                    "valor": null,
+                    "oculto": false
+                }
+            ],
+            "puertos_salida": [
+                {
+                    "nombre": "Vector",
+                    "tipo_dato": "VECTOR",
+                    "conectado": true,
+                    "oculto": false
+                }
+            ],
+            "opciones_lista": [],
+            "color_ramp_data": null,
+            "rgb_color": null,
+            "padre": null,
+            "minimizado": false
+        },
+        {
+            "id_interno": "Math",
+            "tipo": "ShaderNodeMath",
+            "etiqueta": "Math",
+            "posicion": {
+                "x": -554.0,
+                "y": 130.1095428466797
+            },
+            "dimensiones": {
+                "ancho": 140.0,
+                "alto": 100.0
+            },
+            "es_marco": false,
+            "color_fondo": null,
+            "puertos_entrada": [
+                {
+                    "nombre": "Value",
+                    "tipo_dato": "VALUE",
+                    "conectado": true,
+                    "valor": null,
+                    "oculto": false
+                },
+                {
+                    "nombre": "Value",
+                    "tipo_dato": "VALUE",
+                    "conectado": false,
+                    "valor": "72.200",
+                    "oculto": false
+                }
+            ],
+            "puertos_salida": [
+                {
+                    "nombre": "Value",
+                    "tipo_dato": "VALUE",
+                    "conectado": true,
+                    "oculto": false
+                }
+            ],
+            "opciones_lista": [
+                "Multiply"
+            ],
+            "color_ramp_data": null,
+            "rgb_color": null,
+            "padre": null,
+            "minimizado": false
+        }
+    ],
+    "cables": [
+        {
+            "desde_nodo": "Emission",
+            "desde_puerto": "Emission",
+            "hacia_nodo": "Material Output",
+            "hacia_puerto": "Surface"
+        },
+        {
+            "desde_nodo": "Checker Texture",
+            "desde_puerto": "Color",
+            "hacia_nodo": "Emission",
+            "hacia_puerto": "Color"
+        },
+        {
+            "desde_nodo": "Texture Coordinate",
+            "desde_puerto": "Object",
+            "hacia_nodo": "Group.001",
+            "hacia_puerto": "Vector"
+        },
+        {
+            "desde_nodo": "Group.001",
+            "desde_puerto": "Radius",
+            "hacia_nodo": "Group",
+            "hacia_puerto": "Radius"
+        },
+        {
+            "desde_nodo": "Group.001",
+            "desde_puerto": "Theta",
+            "hacia_nodo": "Group",
+            "hacia_puerto": "Theta"
+        },
+        {
+            "desde_nodo": "Group.001",
+            "desde_puerto": "Phi",
+            "hacia_nodo": "Group",
+            "hacia_puerto": "Phi"
+        },
+        {
+            "desde_nodo": "Group.001",
+            "desde_puerto": "Radius",
+            "hacia_nodo": "Combine XYZ",
+            "hacia_puerto": "X"
+        },
+        {
+            "desde_nodo": "Group.001",
+            "desde_puerto": "Theta",
+            "hacia_nodo": "Combine XYZ",
+            "hacia_puerto": "Y"
+        },
+        {
+            "desde_nodo": "Math",
+            "desde_puerto": "Value",
+            "hacia_nodo": "Combine XYZ",
+            "hacia_puerto": "Z"
+        },
+        {
+            "desde_nodo": "Combine XYZ",
+            "desde_puerto": "Vector",
+            "hacia_nodo": "Checker Texture",
+            "hacia_puerto": "Vector"
+        },
+        {
+            "desde_nodo": "Group.001",
+            "desde_puerto": "Phi",
+            "hacia_nodo": "Math",
+            "hacia_puerto": "Value"
+        }
+    ]
+}
