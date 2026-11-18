@@ -4,12 +4,6 @@ dist/
 /src/*.html
 *.log
 
-# Originaux des images : NON publiés (le dépôt est visible, ils ne portent ni Glaze ni marquage).
-# Seules les versions protégées de src/img/ sont versionnées. Garde une sauvegarde de assets-src ailleurs.
-/assets-src/**/*.png
-/assets-src/**/*.jpg
-/assets-src/**/*.jpeg
-/assets-src/**/*.webp
 
 # Config locale de l’éditeur
 /.claude/
