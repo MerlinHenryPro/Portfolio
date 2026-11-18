@@ -2,10 +2,14 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const reseaux = [
-  { href: "https://github.com/MerlinHenryPro", label: "GitHub ↗" },
-  { href: "https://www.linkedin.com/in/merlin-henry-16a010396", label: "LinkedIn ↗" },
+  { href: "https://www.linkedin.com/in/merlin-henry-16a010396/", label: "LinkedIn ↗" },
   { href: "https://www.behance.net/Merlin_HENRY", label: "Behance ↗" },
+  { href: "https://github.com/MerlinHenryPro", label: "GitHub ↗" },
 ];
+
+// CV : pas encore de fichier. Quand il sera prêt, dépose-le dans public/cv/ (ex. public/cv/merlin-henry-cv.pdf)
+// et remplace null par "/cv/merlin-henry-cv.pdf" : le bouton le téléchargera.
+const cv: string | null = null;
 const parcours = [
   { annee: "2026", titre: "Etudes en MMI - IUT NFC", texte: "Des études en communication, création et programmation à l’IUT de Montbéliard." },
   { annee: "2025", titre: "Réussite du BAC", texte: "Réussite du Baccalauréat et fin du lycée." },
@@ -31,8 +35,16 @@ const h2 = "pt-[clamp(50px,8vw,80px)] text-[clamp(1.6rem,1.2rem+1.2vw,1.87rem)] 
         <p>Je suis Merlin HENRY, un étudiant en MMI à Montbéliard.</p>
         <p>J’étudie la communication, la programmation de sites web et la création d’affiches, de visuels et l’UX/UI afin de mettre à profit ces compétences et les harmoniser pour créer des visuels, des sites et une communication efficace et mémorable.</p>
         <p>Grand passionné de jeux vidéos et de cuisine, je m’intéresse aux mécanismes derrière mes intérets. J’ai donc décidé de me concentrer sur la création de visuels et la 3D.</p>
-        <div class="flex flex-wrap gap-[15px] pt-2.5">
-          {reseaux.map((r) => <a class="chip" href={r.href} target="_blank" rel="noopener">{r.label}</a>)}
+        <div class="flex flex-wrap items-center gap-[15px] pt-2.5">
+          <a href={cv ?? "#"} download={cv ? "Merlin-HENRY-CV.pdf" : undefined} data-cv={cv ? undefined : "bientot"}
+            title={cv ? undefined : "CV bientôt disponible"}
+            class="btn-primary min-h-12 gap-2 px-6 text-base">
+            <svg aria-hidden="true" viewBox="0 0 24 24" class="size-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 21h14" /></svg>
+            mon CV
+          </a>
+          <nav aria-label="Mes profils" class="flex flex-wrap gap-[15px]">
+            {reseaux.map((r) => <a class="chip" href={r.href} target="_blank" rel="noopener">{r.label}</a>)}
+          </nav>
         </div>
       </div>
     </div>
@@ -67,3 +79,8 @@ const h2 = "pt-[clamp(50px,8vw,80px)] text-[clamp(1.6rem,1.2rem+1.2vw,1.87rem)] 
     </section>
   </main>
 </BaseLayout>
+
+<script>
+  // Tant qu'aucun CV n'est déposé, le bouton ne fait rien (pas de page 404)
+  document.querySelector<HTMLAnchorElement>("[data-cv=bientot]")?.addEventListener("click", (e) => e.preventDefault());
+</script>
