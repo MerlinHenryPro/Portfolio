@@ -29,7 +29,7 @@ const distant = [
   "set -e",
   `mkdir -p ${DOSSIER}`,
   `rm -rf ${DOSSIER}/dist.nouveau && mkdir ${DOSSIER}/dist.nouveau`,
-  `tar -xzf - -C ${DOSSIER}/dist.nouveau`,
+  `tar -xzmf - -C ${DOSSIER}/dist.nouveau`, // -m : ignore les dates (horloge du VPS en retard)
   `rm -rf ${DOSSIER}/dist.ancien`,
   `if [ -d ${DOSSIER}/dist ]; then mv ${DOSSIER}/dist ${DOSSIER}/dist.ancien; fi`,
   `mv ${DOSSIER}/dist.nouveau ${DOSSIER}/dist`,
