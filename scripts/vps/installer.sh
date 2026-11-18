@@ -5,7 +5,9 @@
 #   ssh -p 23040 etudiant@185.157.244.202
 #   curl -fsSL https://raw.githubusercontent.com/MerlinHenryPro/Portfolio/main/scripts/vps/installer.sh | bash
 #
-# Prérequis : un enregistrement DNS « A » portfolio.merlinhenry.fr → 185.157.244.202 (Infomaniak)
+# Prérequis :
+#  - un enregistrement DNS « A » portfolio.merlinhenry.fr → 185.157.244.202 (Infomaniak)
+#  - git, Bun, Apache et certbot déjà installés sur le VPS (fait pendant le TP)
 # =============================================================================
 set -euo pipefail
 
@@ -14,18 +16,12 @@ DEPOT="https://github.com/MerlinHenryPro/Portfolio.git"
 DOSSIER="/var/www/portfolio"
 EMAIL="${EMAIL:-henrymerlin.pro@gmail.com}"
 
-echo "==> 1/6 Paquets nécessaires (git, curl, unzip, apache, certbot)"
-sudo apt-get update -qq
-sudo apt-get install -y -qq git curl unzip apache2 certbot python3-certbot-apache
-
-echo "==> 2/6 Bun"
-if ! command -v bun >/dev/null 2>&1 && [ ! -x "$HOME/.bun/bin/bun" ]; then
-  curl -fsSL https://bun.sh/install | bash
-fi
 export PATH="$HOME/.bun/bin:$PATH"
-bun --version
+for outil in git bun apache2ctl certbot; do
+  command -v "$outil" >/dev/null 2>&1 || { echo "!! « $outil » est introuvable sur le VPS : installe-le puis relance ce script."; exit 1; }
+done
 
-echo "==> 3/6 Récupération du site dans $DOSSIER"
+echo "==> 1/4 Récupération du site dans $DOSSIER"
 sudo mkdir -p "$DOSSIER"
 sudo chown -R "$USER:$USER" "$DOSSIER"
 if [ -d "$DOSSIER/.git" ]; then
@@ -34,12 +30,12 @@ else
   git clone "$DEPOT" "$DOSSIER"
 fi
 
-echo "==> 4/6 Construction du site (dist/)"
+echo "==> 2/4 Construction du site (dist/)"
 cd "$DOSSIER"
 bun install --frozen-lockfile
 bun run build
 
-echo "==> 5/6 Configuration Apache pour $DOMAINE"
+echo "==> 3/4 Configuration Apache pour $DOMAINE"
 sudo a2enmod -q rewrite headers expires ssl >/dev/null
 sudo tee "/etc/apache2/sites-available/portfolio.conf" >/dev/null <<APACHE
 <VirtualHost *:80>
@@ -84,7 +80,7 @@ sudo a2ensite -q portfolio.conf >/dev/null
 sudo apache2ctl configtest
 sudo systemctl reload apache2
 
-echo "==> 6/6 Certificat HTTPS (Let's Encrypt)"
+echo "==> 4/4 Certificat HTTPS (Let's Encrypt)"
 if getent hosts "$DOMAINE" >/dev/null; then
   sudo certbot --apache -d "$DOMAINE" --non-interactive --agree-tos -m "$EMAIL" --redirect
 else

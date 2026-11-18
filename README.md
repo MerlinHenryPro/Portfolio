@@ -155,7 +155,7 @@ Apache sert directement le dossier `/var/www/portfolio/dist`.
    ```bash
    curl -fsSL https://raw.githubusercontent.com/MerlinHenryPro/Portfolio/main/scripts/vps/installer.sh | bash
    ```
-   Il installe ce qu'il faut (git, Bun, Apache, certbot), clone le dépôt dans `/var/www/portfolio`,
+   Il vérifie que git, Bun, Apache et certbot sont présents (déjà installés pendant le TP), clone le dépôt dans `/var/www/portfolio`,
    construit le site, crée le VirtualHost Apache (`/etc/apache2/sites-available/portfolio.conf`)
    et le certificat HTTPS. Le mot de passe `sudo` est demandé.
 
